@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Роствертол</string>
+
+
+    <string name="title_news">News</string>
+    <string name="title_sold">Sold</string>
+    <string name="title_events">Events</string>
+    <string name="title_newspaper">Newspaper</string>
+    <string name="title_others">Others</string>
+
+
+</resources>
