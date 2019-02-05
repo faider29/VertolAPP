@@ -17,4 +17,8 @@ public class FragmentSold extends Fragment {
         View view = inflater.inflate(R.layout.fr_sold,container,false);
         return view;
     }
+    public static FragmentSold newInstance(){
+        return new FragmentSold();
+    }
 }
+

@@ -1,4 +1,4 @@
-package com.andrienkom.vertolapp.Adapter;
+package com.andrienkom.vertolapp.utility.adapters;
 
 
 import android.content.Context;
@@ -12,7 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andrienkom.vertolapp.R;
-import com.andrienkom.vertolapp.entities.EntityNews;
+import com.andrienkom.vertolapp.entities.News;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,11 @@ import java.util.List;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     private Context mContext;
-    private List<EntityNews> mNewsList;
+    private List<News> mNewsList;
 
     private List<OnItemClickListener> mItemClickListeners;
 
-    public NewsAdapter(Context context, List<EntityNews> newsList) {
+    public NewsAdapter(Context context, List<News> newsList) {
         mContext = context;
         mNewsList = newsList;
         mItemClickListeners = new ArrayList<>();
@@ -40,8 +41,23 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NewsHolder newsHolder, int i) {
-        newsHolder.setHeader(mNewsList.get(i).getHeader());
-        newsHolder.setNewsImage(mNewsList.get(i).getImage());
+        newsHolder.setHeader(mNewsList.get(i).getTitle());
+        Picasso.get()
+                .load(mNewsList.get(i).getImg())
+//                .placeholder()
+                .error(R.drawable.error)
+                .into(newsHolder.getNewsImage());
+//        Picasso.with(mContext.load(mNewsList.get(i).getImg()).error(R.drawable.error).into(newsHolder.getNewsImage(), new Callback() {
+//            @Override
+//            public void onSuccess() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Exception e) {
+//
+//            }
+//        }));
         newsHolder.setDate(mNewsList.get(i).getDate());
         newsHolder.setClickListener(view -> {
             if (mItemClickListeners.size() != 0 && mNewsList != null){
@@ -92,10 +108,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
             mView.setOnClickListener(listener);
         }
 
+        public ImageView getNewsImage() {
+            return mNewsImage;
+        }
+
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int position, EntityNews news);
+        void onItemClick(int position, News news);
     }
 
 }
