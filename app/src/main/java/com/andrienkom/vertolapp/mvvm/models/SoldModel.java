@@ -1,11 +1,11 @@
 package com.andrienkom.vertolapp.mvvm.models;
 
-
-import com.andrienkom.vertolapp.entities.News;
+import com.andrienkom.vertolapp.entities.Sold;
+import com.andrienkom.vertolapp.interfaces.SoldModelListener;
 import com.andrienkom.vertolapp.network.NetworkRepository;
-import com.andrienkom.vertolapp.interfaces.MainModelListener;
 
 import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +13,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsModel {
+public class SoldModel {
+
 
     private Callback<JsonObject> mCallback;
 
-    //private static final String TAG = NewsModel.class.getSimpleName();
 
-    private List<MainModelListener> mListeners = new ArrayList<>();
 
-    public NewsModel() {
+    private List<SoldModelListener> mListeners = new ArrayList<>();
+
+    public SoldModel() {
         initCallbacks();
     }
 
@@ -29,7 +30,7 @@ public class NewsModel {
      * запрашиваем данные
      */
     public void start() {
-        NetworkRepository.getInstance().getAllNews(mCallback);
+        NetworkRepository.getInstance().getSold(mCallback);
     }
 
 
@@ -38,17 +39,12 @@ public class NewsModel {
      * Добавляем слушателя в список на оповещение
      * @param listener - слушатель который хотим добавить
      */
-    public void addListener(MainModelListener listener) {
+    public void addListener(SoldModelListener listener) {
         mListeners.add(listener);
     }
 
-    /**
-     * Убираем слушателя из списка оповещений
-     * ВНИМАНИЕ!!! за жизненный цикл слушателей отвечает подписчик а не издатель,
-     * поэтому чтобы не словить утечку памяти не забывай отписываться в деструкторе
-     * @param listener - слушатель который хотим удалить
-     */
-    public void removeListener(MainModelListener listener) {
+
+    public void removeListener(SoldModelListener listener) {
         mListeners.remove(listener);
     }
 
@@ -58,21 +54,19 @@ public class NewsModel {
         mCallback = new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                for (MainModelListener listener: mListeners) {
-                        listener.articlesListLoad(News.getNewsFromJson(response.body()));
+                for (SoldModelListener listener: mListeners) {
+                    listener.soldListLoad(Sold.getSoldFromJson(response.body()));
                 }
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 t.printStackTrace();
-                for (MainModelListener listener: mListeners) {
+                for (SoldModelListener listener: mListeners) {
                     listener.error(t.getMessage());
                 }
             }
         };
 
     }
-
 }
-

@@ -1,13 +1,12 @@
 package com.andrienkom.vertolapp;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.widget.TextView;
 
+
+import com.andrienkom.vertolapp.mvvm.fragments.FragmentEvents;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentNews;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentSold;
 
@@ -29,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                     addFragment(FragmentSold.newInstance());
                     break;
                 case R.id.navigation_events:
+                    addFragment(FragmentEvents.newInstance());
                     break;
                 case R.id.navigation_newspaper:
                     break;

@@ -6,25 +6,20 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class News {
+public class Sold {
 
     private String title;
 
-
     private String text;
-
 
     private String img;
 
+    private  String date;
 
-    private String date;
-
-    public News() {}
+    public Sold(){}
 
 
     public String getTitle() {
@@ -59,24 +54,16 @@ public class News {
         this.date = date;
     }
 
-    /**
-     * Да, сущность не должна уметь себя парсить
-     * но я считаю что должна.
-     * @param response - на вход получаем сырой JSON
-     * @return - если удачно распарсили, то возвращаем список обьектов
-     * @throws JSONException - если словили exception, то прокидываем его вызывающему методу
-     */
-    public static List<News> getNewsFromJson(JsonObject response) {
-        List<News> newsList = new ArrayList<>();
+    public static List<Sold> getSoldFromJson(JsonObject response) {
+        List<Sold> soldList = new ArrayList<>();
         Gson gson = new Gson();
         JsonArray array = response.getAsJsonArray("result");
-
         for (int i = 0; i < array.size(); i++) {
-            News news = gson.fromJson(array.get(i), News.class);
-            newsList.add(news);
+            Sold sold = gson.fromJson(array.get(i), Sold.class);
+            soldList.add(sold);
         }
 
-        return newsList;
+        return soldList;
     }
 
     @Override

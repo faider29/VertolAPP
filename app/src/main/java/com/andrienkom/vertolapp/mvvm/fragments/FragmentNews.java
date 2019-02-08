@@ -49,36 +49,7 @@ public class FragmentNews extends Fragment {
         mRecyclerView = view.findViewById(R.id.rv_news);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
-       /* Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("http://46.229.215.224:9999/api/")
-                .addConverterFactory(GsonConverterFactory.create());
-        Retrofit retrofit = builder.build();
-
-        final Api api = retrofit.create(Api.class);
-
-        Call<JsonObject> j = api.getNewsUser("all", "null");
-        j.enqueue(new Callback<JsonObject>() {
-
-                      @Override
-                      public void onResponse(Call<JsonObject> call, retrofit2.Response<JsonObject> response) {
-                          if (response.isSuccessful()){
-
-                              JsonObject jsonObject = response.body();
-                              Log.d(TAG, "api" + jsonObject.getAsString());
-                          }
-
-                      }
-
-                      @Override
-                      public void onFailure(Call<JsonObject> call, Throwable t) {
-
-                          Log.d(TAG , "error" + t.getMessage());
-                      }
-                  });*/
-
-
-
-      observe();
+        observe();
         return view;
     }
 

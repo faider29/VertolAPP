@@ -36,6 +36,10 @@ public class NetworkRepository {
     }
 
 
+    /**
+     * retrofit News
+     * @param callback
+     */
    public void getAllNews(Callback<JsonObject> callback) {
        Retrofit.Builder builder = new Retrofit.Builder()
                .baseUrl(Consts.BASE_URL)
@@ -49,9 +53,6 @@ public class NetworkRepository {
    }
 
     public void getAFromCategoryNews(Callback<JsonObject> callback, String category) {
-        /*Log.d(TAG, "get: url");
-        Application.getInstance().addToRequestQueue(new JsonArrayRequest(Request.Method.GET,url, callBack, errorCallback));*/
-
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(Consts.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create());
@@ -60,6 +61,37 @@ public class NetworkRepository {
         final Api api = retrofit.create(Api.class);
 
         Call<JsonObject> j = api.getNewsUser("category", "null");
+        j.enqueue(callback);
+    }
+
+    /**
+     * Retrofit Sold
+     * @param callback
+     */
+    public void getSold(Callback<JsonObject> callback) {
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(Consts.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit = builder.build();
+
+        final Api api = retrofit.create(Api.class);
+
+        Call<JsonObject> j = api.getSoldUser();
+        j.enqueue(callback);
+    }
+
+    /**
+     * retrofit Events
+     */
+    public void getEvents(Callback<JsonObject> callback) {
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(Consts.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit = builder.build();
+
+        final Api api = retrofit.create(Api.class);
+
+        Call<JsonObject> j = api.getEventsUser();
         j.enqueue(callback);
     }
 

@@ -1,30 +1,24 @@
 package com.andrienkom.vertolapp.entities;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class News {
+public class Events {
 
     private String title;
 
-
     private String text;
-
 
     private String img;
 
-
     private String date;
 
-    public News() {}
+    public Events() {
+    }
 
 
     public String getTitle() {
@@ -59,28 +53,20 @@ public class News {
         this.date = date;
     }
 
-    /**
-     * Да, сущность не должна уметь себя парсить
-     * но я считаю что должна.
-     * @param response - на вход получаем сырой JSON
-     * @return - если удачно распарсили, то возвращаем список обьектов
-     * @throws JSONException - если словили exception, то прокидываем его вызывающему методу
-     */
-    public static List<News> getNewsFromJson(JsonObject response) {
-        List<News> newsList = new ArrayList<>();
+    public static List<Events> getEventsFromJson(JsonObject response) {
+        List<Events> eventsList = new ArrayList<>();
         Gson gson = new Gson();
         JsonArray array = response.getAsJsonArray("result");
-
         for (int i = 0; i < array.size(); i++) {
-            News news = gson.fromJson(array.get(i), News.class);
-            newsList.add(news);
+            Events events = gson.fromJson(array.get(i), Events.class);
+            eventsList.add(events);
         }
 
-        return newsList;
+        return eventsList;
     }
 
     @Override
     public String toString() {
-        return  " title: " + title + " text: " + text + " date: " + date;
+        return " title: " + title + " text: " + text + " date: " + date;
     }
 }

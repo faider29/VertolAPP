@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.News;
+import com.andrienkom.vertolapp.utility.Consts;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -39,33 +40,23 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         return new NewsHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull NewsHolder newsHolder, int i) {
-        newsHolder.setHeader(mNewsList.get(i).getTitle());
-        Picasso.get()
-                .load(mNewsList.get(i).getImg())
-//                .placeholder()
-                .error(R.drawable.error)
-                .into(newsHolder.getNewsImage());
-//        Picasso.with(mContext.load(mNewsList.get(i).getImg()).error(R.drawable.error).into(newsHolder.getNewsImage(), new Callback() {
-//            @Override
-//            public void onSuccess() {
-//
-//            }
-//
-//            @Override
-//            public void onError(Exception e) {
-//
-//            }
-//        }));
-        newsHolder.setDate(mNewsList.get(i).getDate());
-        newsHolder.setClickListener(view -> {
-            if (mItemClickListeners.size() != 0 && mNewsList != null){
-                for (OnItemClickListener l: mItemClickListeners){
-                    l.onItemClick(i, mNewsList.get(i));
-                }
+
+@Override
+public void onBindViewHolder(@NonNull NewsHolder newsHolder, int i) {
+    newsHolder.setHeader(mNewsList.get(i).getTitle());
+    Picasso.get()
+            .load(Consts.BASE_URL + mNewsList.get(i).getImg())
+            .error(R.drawable.error)
+            .into(newsHolder.getNewsImage());
+
+    newsHolder.setDate(mNewsList.get(i).getDate());
+    newsHolder.setClickListener(view -> {
+        if (mItemClickListeners.size() != 0 && mNewsList != null){
+            for (OnItemClickListener l: mItemClickListeners){
+                l.onItemClick(i, mNewsList.get(i));
             }
-        });
+        }
+    });
     }
 
     @Override
