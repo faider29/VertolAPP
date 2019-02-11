@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Events;
 import com.andrienkom.vertolapp.mvvm.viewModels.EventsViewModel;
@@ -41,9 +42,10 @@ public class FragmentEvents extends Fragment {
        View view = inflater.inflate(R.layout.fr_events,container,false);
 
        mEventsAdapter = new EventsAdapter(getContext(),mEventsList);
-       mEventsAdapter.setOnItemClickListener((position, events) -> {
 
-       });
+       mEventsAdapter.setOnItemClickListener((position, events) -> ((MainActivity) Objects.requireNonNull(getActivity()))
+               .addFragment(FragmentReadEvents.newInstance(events)));
+
        mRecyclerView = view.findViewById(R.id.rv_events);
        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
        mRecyclerView.setAdapter(mEventsAdapter);

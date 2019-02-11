@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.entities.News;
 import com.andrienkom.vertolapp.utility.adapters.NewsAdapter;
 import com.andrienkom.vertolapp.R;
@@ -43,9 +44,7 @@ public class FragmentNews extends Fragment {
         View view = inflater.inflate(R.layout.fr_news,container, false);
 
         mAdapter = new NewsAdapter(getContext(), mNewsList);
-        mAdapter.setOnItemClickListener((position, news) -> {
-
-        });
+        mAdapter.setOnItemClickListener((position, news) -> ((MainActivity) getActivity()).addFragment(FragmentReadNews.newInstance(news)));
         mRecyclerView = view.findViewById(R.id.rv_news);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);

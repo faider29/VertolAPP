@@ -1,6 +1,5 @@
 package com.andrienkom.vertolapp.entities;
 
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -8,10 +7,11 @@ import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class News {
+public class News implements Serializable {
 
     private String title;
 

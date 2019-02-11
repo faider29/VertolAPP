@@ -7,6 +7,10 @@
     <string name="title_events">Events</string>
     <string name="title_newspaper">Newspaper</string>
     <string name="title_others">Others</string>
+    <string name="fck_strela">ФСК Стрела</string>
+    <string name="cdk_rostov">СДК Ростов</string>
+    <string name="youth">Молодежь</string>
+    <string name="phone_book">Телефонная книга</string>
 
 
 </resources>
