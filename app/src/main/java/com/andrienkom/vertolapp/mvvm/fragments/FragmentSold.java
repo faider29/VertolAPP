@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Sold;
 import com.andrienkom.vertolapp.mvvm.viewModels.SoldViewModel;
@@ -45,6 +46,7 @@ public class FragmentSold extends Fragment {
 
         mAdapter = new SoldAdapter(getContext(), mSoldList);
         mAdapter.setOnItemClickListener((position, sold) -> {
+            ((MainActivity) getActivity()).addFragment(FragmentReadSold.newInstance(sold));
         });
         mRecyclerView = view.findViewById(R.id.rv_sold);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

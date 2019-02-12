@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.entities.News;
@@ -28,6 +29,7 @@ public class FragmentNews extends Fragment {
     private RecyclerView mRecyclerView;
     private NewsAdapter mAdapter;
     private List<News> mNewsList = new ArrayList<>();
+    private Button mButton;
 
     private NewsViewModel mViewModel;
 
@@ -44,13 +46,16 @@ public class FragmentNews extends Fragment {
         View view = inflater.inflate(R.layout.fr_news,container, false);
 
         mAdapter = new NewsAdapter(getContext(), mNewsList);
-        mAdapter.setOnItemClickListener((position, news) -> ((MainActivity) getActivity()).addFragment(FragmentReadNews.newInstance(news)));
+        mAdapter.setOnItemClickListener((position, news) ->
+                ((MainActivity) getActivity()).addFragment(FragmentReadNews.newInstance(news)));
         mRecyclerView = view.findViewById(R.id.rv_news);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
         observe();
         return view;
     }
+
+
 
     private void observe() {
         mViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(NewsViewModel.class);
@@ -72,5 +77,6 @@ public class FragmentNews extends Fragment {
 
         });
     }
+
 
 }

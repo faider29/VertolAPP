@@ -52,6 +52,22 @@ public class NetworkRepository {
        j.enqueue(callback);
    }
 
+    /**
+     * retrofit FSK News
+     * @param callback
+     */
+    public void getFSKNews(Callback<JsonObject> callback) {
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(Consts.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit = builder.build();
+
+        final Api api = retrofit.create(Api.class);
+
+        Call<JsonObject> j = api.getNewsFromFSK(Consts.Category.fsk.toString(), "null");
+        j.enqueue(callback);
+    }
+
     public void getAFromCategoryNews(Callback<JsonObject> callback, String category) {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(Consts.BASE_URL)

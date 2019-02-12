@@ -28,6 +28,17 @@ public interface Api  {
 //    Call<JsonObject> getSoldUser(
 //    );
 
+
+
+    @POST ("GetNews?category=FSK&month=null")
+    @FormUrlEncoded
+    Call<JsonObject> getNewsFromFSK(
+            @Field("Category") String category,
+            @Field("Month") String month
+    );
+
+
+
     @GET("GetDiscounts")
     Call<JsonObject> getSoldUser();
 
