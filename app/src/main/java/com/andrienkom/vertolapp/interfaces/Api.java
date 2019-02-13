@@ -1,10 +1,9 @@
 package com.andrienkom.vertolapp.interfaces;
 
-import com.andrienkom.vertolapp.entities.News;
+
+import com.andrienkom.vertolapp.entities.Other;
 import com.google.gson.JsonObject;
 
-
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -47,6 +46,24 @@ public interface Api  {
 
     @GET("GetEvents")
     Call<JsonObject> getEventsUser();
+
+    @POST ("GetStatic?category=FSK")
+    @FormUrlEncoded
+    Call<Other> getFCK(
+            @Field("Category") String category
+    );
+
+    @POST ("GetStatic?category=SDK")
+    @FormUrlEncoded
+    Call<Other> getSDK(
+            @Field("Category") String category
+    );
+
+    @POST("GetStatic?category=RY")
+    @FormUrlEncoded
+    Call<Other> getYouth(
+            @Field("Category") String category
+    );
 
 
 }

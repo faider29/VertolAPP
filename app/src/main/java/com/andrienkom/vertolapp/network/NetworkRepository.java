@@ -1,12 +1,10 @@
 package com.andrienkom.vertolapp.network;
 
 
-import com.andrienkom.vertolapp.entities.News;
 import com.andrienkom.vertolapp.interfaces.Api;
 import com.andrienkom.vertolapp.utility.Consts;
 import com.google.gson.JsonObject;
 
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -110,5 +108,6 @@ public class NetworkRepository {
         Call<JsonObject> j = api.getEventsUser();
         j.enqueue(callback);
     }
+
 
 }

@@ -29,7 +29,7 @@ public class FragmentNews extends Fragment {
     private RecyclerView mRecyclerView;
     private NewsAdapter mAdapter;
     private List<News> mNewsList = new ArrayList<>();
-    private Button mButton;
+
 
     private NewsViewModel mViewModel;
 

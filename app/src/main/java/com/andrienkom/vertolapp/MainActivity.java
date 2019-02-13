@@ -8,7 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentEvents;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentNews;
-import com.andrienkom.vertolapp.mvvm.fragments.FragmentOthers;
+import com.andrienkom.vertolapp.mvvm.fragments.FragmentOther;
+import com.andrienkom.vertolapp.mvvm.fragments.FragmentReadFsk;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentSold;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_newspaper:
                     break;
                 case R.id.navigation_others:
-                    addFragment(FragmentOthers.newInstance());
+                    addFragment(FragmentOther.newInstance());
                     break;
             }
             return true;
