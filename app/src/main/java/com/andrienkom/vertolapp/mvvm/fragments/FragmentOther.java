@@ -3,6 +3,7 @@ package com.andrienkom.vertolapp.mvvm.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.card.MaterialCardView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,9 @@ public class FragmentOther extends Fragment {
 
 
     private TextView mText;
+    private MaterialCardView mMcFsk;
+    private MaterialCardView mMcSDK;
+    private MaterialCardView mMcYouth;
 
 
     public static FragmentOther newInstance(){
@@ -36,18 +40,21 @@ public class FragmentOther extends Fragment {
 
 
         mText = view.findViewById(R.id.item_fck);
-        mText.setOnClickListener(v -> {
+        mMcFsk = view.findViewById(R.id.materialCardViewFSK);
+        mMcFsk.setOnClickListener(v -> {
             ((MainActivity) getActivity()).addFragment(FragmentReadFsk.newInstance());
         });
 
 
         mText = view.findViewById(R.id.item_sdk);
-        mText.setOnClickListener(v -> {
+        mMcSDK = view.findViewById(R.id.materialCardViewSDK);
+        mMcSDK.setOnClickListener(v -> {
             ((MainActivity) getActivity()).addFragment(FragmentReadSdk.newInstance());
         });
 
         mText = view.findViewById(R.id.item_youth);
-        mText.setOnClickListener(v -> {
+        mMcYouth = view.findViewById(R.id.materialCardViewYOUTH);
+        mMcYouth.setOnClickListener(v -> {
             ((MainActivity) getActivity()).addFragment(FragmentReadYouth.newInstance());
         });
         return view;

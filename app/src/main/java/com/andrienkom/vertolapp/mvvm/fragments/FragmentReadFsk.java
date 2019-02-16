@@ -38,7 +38,7 @@ public class FragmentReadFsk extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fr_read_fsk_strela, container, false);
-
+        
         mText = view.findViewById(R.id.tv_fck);
 
 
@@ -75,10 +75,7 @@ public class FragmentReadFsk extends Fragment {
 
         return view;
     }
-
-
-
-    }
+}
 
 
 

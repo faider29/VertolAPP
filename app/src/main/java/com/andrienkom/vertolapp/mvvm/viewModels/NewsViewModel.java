@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModel;
 import com.andrienkom.vertolapp.entities.News;
 import com.andrienkom.vertolapp.interfaces.MainModelListener;
 import com.andrienkom.vertolapp.mvvm.models.NewsModel;
+import com.andrienkom.vertolapp.utility.Consts;
 
 import java.util.List;
 
@@ -47,6 +48,10 @@ public class NewsViewModel extends ViewModel implements MainModelListener {
         mModel.removeListener(this);
         mModel = null;
         super.onCleared();
+    }
+
+    public void getNewsFrom(Consts.Category category, String month) {
+        mModel.getNewsFrom(category, month);
     }
 
 

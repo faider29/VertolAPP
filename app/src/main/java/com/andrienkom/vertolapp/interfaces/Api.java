@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -15,37 +16,33 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface Api  {
-    @POST ("GetNews?category=all&month=null")
+
+    /**
+     * Получение всей инфы
+     * @return
+     */
+
+//    @POST ("GetNews?category=Category&month=Month")
+    @POST ("GetNews?")
     @FormUrlEncoded
     Call<JsonObject> getNewsUser(
-        @Field( "Category") String category,
-        @Field( "Month") String month
+        @Field( "category") String category,
+        @Field( "month") String month
     );
-
-//        @GET("GetDiscounts")
-//        @FormUrlEncoded
-//    Call<JsonObject> getSoldUser(
-//    );
-
-
-
-    @POST ("GetNews?category=FSK&month=null")
-    @FormUrlEncoded
-    Call<JsonObject> getNewsFromFSK(
-            @Field("Category") String category,
-            @Field("Month") String month
-    );
-
-
 
     @GET("GetDiscounts")
     Call<JsonObject> getSoldUser();
 
 
-
-
     @GET("GetEvents")
     Call<JsonObject> getEventsUser();
+
+
+    /**
+     * Статическая информация
+     * @param category
+     * @return
+     */
 
     @POST ("GetStatic?category=FSK")
     @FormUrlEncoded
@@ -66,4 +63,28 @@ public interface Api  {
     );
 
 
+
+
+
+    @POST ("GetNews?category=FSK&month=null")
+    @FormUrlEncoded
+    Call<JsonObject> getNewsFromFSK(
+            @Field("Category") String category,
+            @Field("Month") String month
+    );
+
+
+    @POST("GetNews?category=SDK&month=null")
+    @FormUrlEncoded
+    Call<JsonObject> getNewsFromSDK(
+            @Field("Category") String category,
+            @Field("Month") String month
+    );
+
+    @POST("GetNews?category=RY&month=null")
+    @FormUrlEncoded
+    Call<JsonObject> getNewsFromRY(
+            @Field("Category") String category,
+            @Field("Month") String month
+    );
 }

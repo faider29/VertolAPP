@@ -1,11 +1,15 @@
 package com.andrienkom.vertolapp.mvvm.models;
 
 
+import android.util.Log;
+
 import com.andrienkom.vertolapp.entities.News;
 import com.andrienkom.vertolapp.network.NetworkRepository;
 import com.andrienkom.vertolapp.interfaces.MainModelListener;
 
+import com.andrienkom.vertolapp.utility.Consts;
 import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +21,7 @@ public class NewsModel {
 
     private Callback<JsonObject> mCallback;
 
-    //private static final String TAG = NewsModel.class.getSimpleName();
+    private static final String TAG = NewsModel.class.getSimpleName();
 
     private List<MainModelListener> mListeners = new ArrayList<>();
 
@@ -32,6 +36,10 @@ public class NewsModel {
         NetworkRepository.getInstance().getAllNews(mCallback);
     }
 
+
+    public void getNewsFrom(Consts.Category category, String month) {
+        NetworkRepository.getInstance().getNewsFrom(mCallback, category, month);
+    }
 
 
     /**
@@ -58,6 +66,7 @@ public class NewsModel {
         mCallback = new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                Log.d(TAG, "onResponse: " + call.request().toString());
                 for (MainModelListener listener: mListeners) {
                         listener.articlesListLoad(News.getNewsFromJson(response.body()));
                 }

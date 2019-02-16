@@ -13,17 +13,17 @@ public abstract class Consts {
         },
         fsk {
             public String toString() {
-                return "fsk";
+                return "FSK";
             }
         },
         sdk {
             public String toString() {
-                return "sdk";
+                return "SDK";
             }
         },
         ry {
             public String toString() {
-                return "ry";
+                return "RY";
             }
         }
     }
