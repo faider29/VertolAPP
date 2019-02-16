@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andrienkom.vertolapp.R;
@@ -28,6 +29,10 @@ public class FragmentReadYouth extends Fragment {
 
     private TextView mTextView;
 
+    private View mToolbar;
+    private ImageView mBtnBack;
+    private TextView mLabel;
+
 
     public static FragmentReadYouth newInstance(){
         return new FragmentReadYouth();
@@ -36,6 +41,16 @@ public class FragmentReadYouth extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fr_read_youth,container,false);
+
+
+        mToolbar = view.findViewById(R.id.fr_read_youth_custom_toolbar);
+        mBtnBack = view.findViewById(R.id.fr_read_youth_btn_back);
+        mLabel = view.findViewById(R.id.fr_read_youth_label);
+
+        mBtnBack.setOnClickListener(v->{
+            getActivity().onBackPressed();
+        });
+
 
         mTextView = view.findViewById(R.id.tv_youth);
 

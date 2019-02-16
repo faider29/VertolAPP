@@ -62,7 +62,7 @@ public class NetworkRepository {
 
         final Api api = retrofit.create(Api.class);
 
-        Call<JsonObject> j = api.getNewsFromFSK(category.toString(), month);
+        Call<JsonObject> j = api.getNewsUser(category.toString(), month);
         j.enqueue(callback);
     }
 

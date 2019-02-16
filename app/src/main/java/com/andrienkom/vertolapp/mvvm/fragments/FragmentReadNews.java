@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.News;
 import com.andrienkom.vertolapp.utility.Consts;
@@ -22,6 +23,11 @@ public class FragmentReadNews extends Fragment {
     private TextView mHeader;
     private TextView mText;
     private TextView mDate;
+
+
+    private View mToolbar;
+    private ImageView mBtnBack;
+    private TextView mLabel;
 
     private static final String DESCRIBABLE_KEY = "describable_key";
 
@@ -42,6 +48,14 @@ public class FragmentReadNews extends Fragment {
         View view = inflater.inflate(R.layout.fr_read_news,container, false);
         news = (News) getArguments().getSerializable(DESCRIBABLE_KEY);
 
+
+        mToolbar = view.findViewById(R.id.fr_news_custom_toolbar);
+        mBtnBack = view.findViewById(R.id.fr_news_btn_back);
+        mLabel = view.findViewById(R.id.fr_news_label);
+
+        mBtnBack.setOnClickListener(v->{
+            getActivity().onBackPressed();
+        });
 
 
         mHeader = view.findViewById(R.id.tv_read_header_news);

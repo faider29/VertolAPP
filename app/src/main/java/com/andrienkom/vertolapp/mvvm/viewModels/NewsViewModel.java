@@ -18,6 +18,8 @@ public class NewsViewModel extends ViewModel implements MainModelListener {
     private MutableLiveData<String> mError = new MutableLiveData<>();
     private MutableLiveData<Boolean> mIsLoad = new MutableLiveData<>();
 
+    private Consts.Category mCategory = Consts.Category.all;
+    private String mMonth = "null";
 
     public NewsViewModel() {
         mModel = new NewsModel();
@@ -50,8 +52,32 @@ public class NewsViewModel extends ViewModel implements MainModelListener {
         super.onCleared();
     }
 
-    public void getNewsFrom(Consts.Category category, String month) {
-        mModel.getNewsFrom(category, month);
+    public void getNewsFrom(int position) {
+        mIsLoad.postValue(true);
+        switch (position) {
+            case 0:
+                mModel.getNewsFrom(Consts.Category.all, mMonth);
+                mCategory = Consts.Category.all;
+                break;
+            case 1:
+                mModel.getNewsFrom(Consts.Category.fsk, mMonth);
+                mCategory = Consts.Category.fsk;
+                break;
+            case 2:
+                mModel.getNewsFrom(Consts.Category.sdk, mMonth);
+                mCategory = Consts.Category.sdk;
+                break;
+            case 3:
+                mModel.getNewsFrom(Consts.Category.ry, mMonth);
+                mCategory = Consts.Category.ry;
+                break;
+        }
+
+    }
+
+    private void getNewsFromMonth(String month) {
+        mMonth = month;
+        mModel.getNewsFrom(mCategory, month);
     }
 
 

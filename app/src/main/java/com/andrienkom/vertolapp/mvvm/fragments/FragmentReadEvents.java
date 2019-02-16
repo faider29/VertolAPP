@@ -28,6 +28,12 @@ public class FragmentReadEvents extends Fragment {
     private TextView mDate;
 
 
+    private View mToolbar;
+    private ImageView mBtnBack;
+    private TextView mTextView;
+
+
+
 
 
 
@@ -47,6 +53,10 @@ public class FragmentReadEvents extends Fragment {
        View view = inflater.inflate(R.layout.fr_read_events, container, false);
         events = (Events) getArguments().getSerializable(EVENTS_KEY);
 
+        mToolbar = view.findViewById(R.id.fr_read_events_custom_toolbar);
+        mBtnBack = view.findViewById(R.id.fr_read_events_btn_back);
+        mTextView = view.findViewById(R.id.fr_read_events_label);
+
 
         mHeader = view.findViewById(R.id.tv_read_header_events);
         mHeader.setText(events.getTitle());
@@ -63,7 +73,9 @@ public class FragmentReadEvents extends Fragment {
                 .error(R.drawable.error)
                 .into(getEventsImage());
 
-
+        mBtnBack.setOnClickListener(v->{
+            getActivity().onBackPressed();
+        });
 
         return view;
     }

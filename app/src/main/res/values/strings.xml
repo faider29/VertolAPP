@@ -11,6 +11,15 @@
     <string name="cdk_rostov">СДК Ростов</string>
     <string name="youth">Молодежь</string>
     <string name="phone_book">Телефонная книга</string>
+    
+    <string-array name="dropdown_list">
+
+        <item>Новости</item>
+        <item>ФСК Стрела</item>
+        <item>СДК Ростов</item>
+        <item>Молодежь</item>
+
+    </string-array>
 
 
 </resources>

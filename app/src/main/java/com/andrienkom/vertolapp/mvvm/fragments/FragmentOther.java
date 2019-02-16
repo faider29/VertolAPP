@@ -23,6 +23,10 @@ public class FragmentOther extends Fragment {
     private MaterialCardView mMcSDK;
     private MaterialCardView mMcYouth;
 
+    private View mToolbar;
+    private TextView mLabel;
+
+
 
     public static FragmentOther newInstance(){
         return new FragmentOther();
@@ -35,27 +39,30 @@ public class FragmentOther extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.other_mc,container,false);
+        View view = inflater.inflate(R.layout.fr_other,container,false);
+
+        mToolbar= view.findViewById(R.id.fr_other_custom_toolbar);
+        mLabel = view.findViewById(R.id.fr_other_label);
 
 
 
         mText = view.findViewById(R.id.item_fck);
         mMcFsk = view.findViewById(R.id.materialCardViewFSK);
         mMcFsk.setOnClickListener(v -> {
-            ((MainActivity) getActivity()).addFragment(FragmentReadFsk.newInstance());
+            ((MainActivity) getActivity()).addFragmentToBackStack(FragmentReadFsk.newInstance());
         });
 
 
         mText = view.findViewById(R.id.item_sdk);
         mMcSDK = view.findViewById(R.id.materialCardViewSDK);
         mMcSDK.setOnClickListener(v -> {
-            ((MainActivity) getActivity()).addFragment(FragmentReadSdk.newInstance());
+            ((MainActivity) getActivity()).addFragmentToBackStack(FragmentReadSdk.newInstance());
         });
 
         mText = view.findViewById(R.id.item_youth);
         mMcYouth = view.findViewById(R.id.materialCardViewYOUTH);
         mMcYouth.setOnClickListener(v -> {
-            ((MainActivity) getActivity()).addFragment(FragmentReadYouth.newInstance());
+            ((MainActivity) getActivity()).addFragmentToBackStack(FragmentReadYouth.newInstance());
         });
         return view;
     }

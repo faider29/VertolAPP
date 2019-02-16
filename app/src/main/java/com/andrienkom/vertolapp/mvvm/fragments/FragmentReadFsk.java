@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andrienkom.vertolapp.R;
@@ -29,6 +30,11 @@ public class FragmentReadFsk extends Fragment {
 
     private TextView mText;
 
+    private View mToolbar;
+    private ImageView mBtnBack;
+    private TextView mLabel;
+
+
     public static FragmentReadFsk newInstance() {
         return new FragmentReadFsk();
     }
@@ -38,6 +44,10 @@ public class FragmentReadFsk extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fr_read_fsk_strela, container, false);
+
+        mToolbar = view.findViewById(R.id.fr_read_fsk_custom_toolbar);
+        mBtnBack = view.findViewById(R.id.fr_read_fsk_btn_back);
+        mLabel = view.findViewById(R.id.fr_read_fsk_label);
         
         mText = view.findViewById(R.id.tv_fck);
 
@@ -72,6 +82,11 @@ public class FragmentReadFsk extends Fragment {
             }
 
         });
+
+        mBtnBack.setOnClickListener(v->{
+            getActivity().onBackPressed();
+        });
+
 
         return view;
     }

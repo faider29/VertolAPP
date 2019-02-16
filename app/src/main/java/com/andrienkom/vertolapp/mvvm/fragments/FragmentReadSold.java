@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Sold;
 import com.andrienkom.vertolapp.utility.Consts;
@@ -22,6 +23,11 @@ public class FragmentReadSold extends Fragment {
     private TextView mHeader;
     private TextView mText;
     private TextView mDate;
+
+
+    private View mToolbar;
+    private ImageView mBtnBack;
+    private TextView mLabel;
 
     public static final String SOLD_KEY = "sold_key";
 
@@ -44,6 +50,12 @@ public class FragmentReadSold extends Fragment {
         View view = inflater.inflate(R.layout.fr_read_sold,container,false);
         sold = (Sold) getArguments().getSerializable(SOLD_KEY);
 
+
+
+        mToolbar = view.findViewById(R.id.fr_read_sold_custom_toolbar);
+        mBtnBack = view.findViewById(R.id.fr_read_sold_btn_back);
+        mLabel = view.findViewById(R.id.fr_read_sold_label);
+
         mHeader = view.findViewById(R.id.tv_read_header_sold);
         mHeader.setText(sold.getTitle());
 
@@ -59,6 +71,9 @@ public class FragmentReadSold extends Fragment {
                 .error(R.drawable.error)
                 .into(getSoldImage());
 
+        mBtnBack.setOnClickListener(v->{
+            getActivity().onBackPressed();
+        });
 
         return view;
     }

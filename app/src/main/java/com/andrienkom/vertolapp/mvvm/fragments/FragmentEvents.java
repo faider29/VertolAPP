@@ -11,12 +11,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Events;
 import com.andrienkom.vertolapp.mvvm.viewModels.EventsViewModel;
 import com.andrienkom.vertolapp.utility.adapters.EventsAdapter;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +32,9 @@ public class FragmentEvents extends Fragment {
     private RecyclerView mRecyclerView;
     private EventsAdapter mEventsAdapter;
     private List<Events> mEventsList = new ArrayList<>();
+
+    private View mToolbar;
+    private TextView mTitleTV;
 
     private EventsViewModel mEventsViewModel;
 
@@ -41,15 +48,20 @@ public class FragmentEvents extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fr_events,container,false);
 
+       mToolbar = view.findViewById(R.id.fr_events_custom_toolbar);
+       mTitleTV = view.findViewById(R.id.fr_events_label);
+
        mEventsAdapter = new EventsAdapter(getContext(),mEventsList);
 
        mEventsAdapter.setOnItemClickListener((position, events) -> ((MainActivity) Objects.requireNonNull(getActivity()))
-               .addFragment(FragmentReadEvents.newInstance(events)));
+               .addFragmentToBackStack(FragmentReadEvents.newInstance(events)));
 
        mRecyclerView = view.findViewById(R.id.rv_events);
        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
        mRecyclerView.setAdapter(mEventsAdapter);
        observe();
+
+
 
 
        return view;

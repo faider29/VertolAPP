@@ -12,7 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.entities.News;
@@ -30,6 +34,12 @@ public class FragmentNews extends Fragment {
     private NewsAdapter mAdapter;
     private List<News> mNewsList = new ArrayList<>();
 
+    private TextView mTitleTV;
+    private View mToolbar;
+    private ImageView mCalendar;
+    private ImageView mBack;
+    private Spinner mSpinner;
+
 
     private NewsViewModel mViewModel;
 
@@ -40,18 +50,49 @@ public class FragmentNews extends Fragment {
         return new FragmentNews();
     }
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fr_news,container, false);
 
+        mTitleTV = view.findViewById(R.id.fr_news_label);
+        mToolbar = view.findViewById(R.id.fr_news_custom_toolbar);
+        mCalendar = view.findViewById(R.id.fr_news_btn_calendar);
+        mBack = view.findViewById(R.id.fr_news_btn_back);
+        mSpinner = view.findViewById(R.id.spinner);
+
         mAdapter = new NewsAdapter(getContext(), mNewsList);
         mAdapter.setOnItemClickListener((position, news) ->
-                ((MainActivity) getActivity()).addFragment(FragmentReadNews.newInstance(news)));
+                ((MainActivity) getActivity()).addFragmentToBackStack(FragmentReadNews.newInstance(news)));
         mRecyclerView = view.findViewById(R.id.rv_news);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
         observe();
+
+        List<String> type = new ArrayList<>();
+        type.add("Все");
+        type.add("ФСК Стрела");
+        type.add("СДК Ростов");
+        type.add("Молодежь");
+
+        mSpinner.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, type));
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mViewModel.getNewsFrom(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        mBack.setOnClickListener(v -> {
+            getActivity().onBackPressed();
+        });
         return view;
     }
 
@@ -77,6 +118,5 @@ public class FragmentNews extends Fragment {
 
         });
     }
-
 
 }

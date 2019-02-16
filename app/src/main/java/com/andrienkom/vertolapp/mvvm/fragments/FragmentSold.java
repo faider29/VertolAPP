@@ -12,12 +12,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Sold;
 import com.andrienkom.vertolapp.mvvm.viewModels.SoldViewModel;
 import com.andrienkom.vertolapp.utility.adapters.SoldAdapter;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +32,12 @@ public class FragmentSold extends Fragment {
     private RecyclerView mRecyclerView;
     private SoldAdapter mAdapter;
     private List<Sold> mSoldList = new ArrayList<>();
+
+
+
+
+    private View mToolbar;
+    private TextView mLabel;
 
     private SoldViewModel mViewModel;
 
@@ -44,9 +54,13 @@ public class FragmentSold extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fr_sold,container,false);
 
+
+        mToolbar = view.findViewById(R.id.fr_sold_custom_toolbar);
+        mLabel = view.findViewById(R.id.fr_sold_label);
+
         mAdapter = new SoldAdapter(getContext(), mSoldList);
         mAdapter.setOnItemClickListener((position, sold) -> {
-            ((MainActivity) getActivity()).addFragment(FragmentReadSold.newInstance(sold));
+            ((MainActivity) getActivity()).addFragmentToBackStack(FragmentReadSold.newInstance(sold));
         });
         mRecyclerView = view.findViewById(R.id.rv_sold);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
