@@ -37,9 +37,12 @@ public class NewsModel {
     }
 
 
-    public void getNewsFrom(Consts.Category category, String month) {
+    public void getNewsFrom(Consts.Category category, Consts.Month month) {
         NetworkRepository.getInstance().getNewsFrom(mCallback, category, month);
     }
+  /*  public void getNewsFrom(Consts.Category category, String month) {
+        NetworkRepository.getInstance().getNewsFrom(mCallback, category, month);
+    }*/
 
 
     /**

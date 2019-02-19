@@ -63,28 +63,4 @@ public interface Api  {
     );
 
 
-
-
-
-    @POST ("GetNews?category=FSK&month=null")
-    @FormUrlEncoded
-    Call<JsonObject> getNewsFromFSK(
-            @Field("Category") String category,
-            @Field("Month") String month
-    );
-
-
-    @POST("GetNews?category=SDK&month=null")
-    @FormUrlEncoded
-    Call<JsonObject> getNewsFromSDK(
-            @Field("Category") String category,
-            @Field("Month") String month
-    );
-
-    @POST("GetNews?category=RY&month=null")
-    @FormUrlEncoded
-    Call<JsonObject> getNewsFromRY(
-            @Field("Category") String category,
-            @Field("Month") String month
-    );
 }

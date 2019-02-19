@@ -19,7 +19,7 @@ public class NewsViewModel extends ViewModel implements MainModelListener {
     private MutableLiveData<Boolean> mIsLoad = new MutableLiveData<>();
 
     private Consts.Category mCategory = Consts.Category.all;
-    private String mMonth = "null";
+    private Consts.Month mSelectMonth = Consts.Month.all;
 
     public NewsViewModel() {
         mModel = new NewsModel();
@@ -56,29 +56,85 @@ public class NewsViewModel extends ViewModel implements MainModelListener {
         mIsLoad.postValue(true);
         switch (position) {
             case 0:
-                mModel.getNewsFrom(Consts.Category.all, mMonth);
+                mModel.getNewsFrom(Consts.Category.all, mSelectMonth);
                 mCategory = Consts.Category.all;
                 break;
             case 1:
-                mModel.getNewsFrom(Consts.Category.fsk, mMonth);
+                mModel.getNewsFrom(Consts.Category.fsk, mSelectMonth);
                 mCategory = Consts.Category.fsk;
                 break;
             case 2:
-                mModel.getNewsFrom(Consts.Category.sdk, mMonth);
+                mModel.getNewsFrom(Consts.Category.sdk, mSelectMonth);
                 mCategory = Consts.Category.sdk;
                 break;
             case 3:
-                mModel.getNewsFrom(Consts.Category.ry, mMonth);
+                mModel.getNewsFrom(Consts.Category.ry, mSelectMonth);
                 mCategory = Consts.Category.ry;
                 break;
         }
 
     }
 
-    private void getNewsFromMonth(String month) {
+    public void getNewsFromMonth(int position) {
+        mIsLoad.postValue(true);
+       switch (position){
+           case 0:
+               mModel.getNewsFrom(mCategory,Consts.Month.all);
+               mSelectMonth = Consts.Month.all;
+               break;
+           case 1:
+               mModel.getNewsFrom(mCategory,Consts.Month.january);
+               mSelectMonth = Consts.Month.january;
+               break;
+           case 2:
+               mModel.getNewsFrom(mCategory,Consts.Month.february);
+               mSelectMonth = Consts.Month.february;
+               break;
+           case 3:
+               mModel.getNewsFrom(mCategory,Consts.Month.march);
+               mSelectMonth = Consts.Month.march;
+               break;
+           case 4:
+               mModel.getNewsFrom(mCategory,Consts.Month.april);
+               mSelectMonth = Consts.Month.april;
+               break;
+           case 5:
+               mModel.getNewsFrom(mCategory,Consts.Month.may);
+               mSelectMonth = Consts.Month.may;
+               break;
+           case 6:
+               mModel.getNewsFrom(mCategory,Consts.Month.june);
+               mSelectMonth = Consts.Month.june;
+               break;
+           case 7:
+               mModel.getNewsFrom(mCategory,Consts.Month.july);
+               mSelectMonth = Consts.Month.july;
+               break;
+           case 8:
+               mModel.getNewsFrom(mCategory,Consts.Month.august);
+               mSelectMonth = Consts.Month.august;
+               break;
+           case 9:
+               mModel.getNewsFrom(mCategory,Consts.Month.september);
+               mSelectMonth = Consts.Month.september;
+               break;
+           case 10:
+               mModel.getNewsFrom(mCategory,Consts.Month.october);
+               mSelectMonth = Consts.Month.october;
+               break;
+           case 11:
+               mModel.getNewsFrom(mCategory,Consts.Month.december);
+               mSelectMonth = Consts.Month.december;
+               break;
+       }
+    }
+
+  /*  public void getNewsFromMonth(String month) {
         mMonth = month;
         mModel.getNewsFrom(mCategory, month);
-    }
+    }*/
+
+
 
 
     public MutableLiveData<List<News>> getArticles() {

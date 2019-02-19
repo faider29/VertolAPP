@@ -1,6 +1,8 @@
 package com.andrienkom.vertolapp.network;
 
 
+import android.util.Log;
+
 import com.andrienkom.vertolapp.interfaces.Api;
 import com.andrienkom.vertolapp.utility.Consts;
 import com.google.gson.JsonObject;
@@ -54,7 +56,19 @@ public class NetworkRepository {
      * retrofit FSK News
      * @param callback
      */
-    public void getNewsFrom(Callback<JsonObject> callback, Consts.Category category, String month) {
+    public void getNewsFrom(Callback<JsonObject> callback, Consts.Category category, Consts.Month month) {
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(Consts.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit = builder.build();
+
+        final Api api = retrofit.create(Api.class);
+        Log.d(TAG, "getNewsFrom: " + category.toString() + "/" + month.toString());
+        Call<JsonObject> j = api.getNewsUser(category.toString(), month.toString());
+        j.enqueue(callback);
+    }
+
+   /* public void getNewsFrom(Callback<JsonObject> callback, Consts.Category category, String month) {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(Consts.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create());
@@ -64,7 +78,7 @@ public class NetworkRepository {
 
         Call<JsonObject> j = api.getNewsUser(category.toString(), month);
         j.enqueue(callback);
-    }
+    }*/
 
 
     /**

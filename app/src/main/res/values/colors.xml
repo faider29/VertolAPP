@@ -7,4 +7,6 @@
     <color name="gray_light">#D2D2D2</color>
     <color name="navigation_title_bar">#e51b1b</color>
     <color name="colorBlack">#000000</color>
+    <color name="title_toolbar">#e51b1b</color>
+    <color name="NearWhite">#e6e6e6</color>
 </resources>
