@@ -8,7 +8,7 @@
     <string name="title_newspaper">Newspaper</string>
     <string name="title_others">Others</string>
     <string name="fck_strela">ФСК Стрела</string>
-    <string name="cdk_rostov">СДК Ростов</string>
+    <string name="cdk_rostov">СДК Роствертол</string>
     <string name="youth">Молодежь</string>
     <string name="phone_book">Телефонная книга</string>
 
@@ -32,7 +32,7 @@
     <string-array name="dropdown_select_news">
         <item>Все</item>
         <item>ФСК Стрела</item>
-        <item>СДК Ростов</item>
+        <item>СДК Роствертол</item>
         <item>Молодежь</item>
     </string-array>
 
