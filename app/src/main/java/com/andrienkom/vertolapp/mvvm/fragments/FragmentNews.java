@@ -71,8 +71,7 @@ public class FragmentNews extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-
-        mSpinnerSelectNews.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.dropdown_select_news)));
+       /* mSpinnerSelectNews.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.dropdown_select_news)));
         mSpinnerSelectNews.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -84,10 +83,29 @@ public class FragmentNews extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
+
+       ArrayAdapter<String> spinneradapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item_news,getResources().getStringArray(R.array.dropdown_select_news));
+       spinneradapter.setDropDownViewResource(R.layout.spiner_dropdown_item_news);
+       mSpinnerSelectNews.setAdapter(spinneradapter);
+       mSpinnerSelectNews.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           @Override
+           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               mViewModel.getNewsFrom(position);
+           }
+
+           @Override
+           public void onNothingSelected(AdapterView<?> parent) {
+
+           }
+       });
 
 
-       mSpinnerSelectMonth.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.dropdown_month)));
+       //mSpinnerSelectMonth.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.dropdown_month)));
+
+       ArrayAdapter<String> spinnerAdapterMonth = new ArrayAdapter<String>(getContext(),R.layout.spiner_item_month,getResources().getStringArray(R.array.dropdown_month));
+       spinnerAdapterMonth.setDropDownViewResource(R.layout.spiner_dropdown_item_month);
+       mSpinnerSelectMonth.setAdapter(spinnerAdapterMonth);
        mSpinnerSelectMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
            @Override
            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

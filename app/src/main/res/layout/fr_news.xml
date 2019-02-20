@@ -34,7 +34,7 @@
             android:layout_height="12dp"
             android:layout_marginTop="4dp"
             android:visibility="invisible"
-            android:src="@drawable/ic_expand_more_black_24dp"
+            android:src="@drawable/ic_arrow_down"
             app:layout_constraintBottom_toBottomOf="@+id/fr_news_label"
             app:layout_constraintStart_toEndOf="@+id/fr_news_label"
             app:layout_constraintTop_toTopOf="@+id/fr_news_label" />
@@ -60,10 +60,13 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:background="#0000"/>
 
         <Spinner
             android:id="@+id/spinner_select_month"
@@ -71,10 +74,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:background="#0000"
+            android:spinnerMode="dropdown"
             app:layout_constraintBottom_toBottomOf="@+id/spinner_select_news"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/spinner_select_news"
-            app:layout_constraintTop_toTopOf="@+id/spinner_select_news"/>
+            app:layout_constraintTop_toTopOf="@+id/spinner_select_news" />
 
     </android.support.constraint.ConstraintLayout>
 
