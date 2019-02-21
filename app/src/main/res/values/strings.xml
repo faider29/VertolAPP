@@ -14,7 +14,7 @@
 
 
     <string-array name="dropdown_month">
-        <item>За все время</item>
+        <item>За год</item>
         <item>Январь</item>
         <item>Февраль</item>
         <item>Март</item>
@@ -32,8 +32,9 @@
     <string-array name="dropdown_select_news">
         <item>Все</item>
         <item>ФСК Стрела</item>
-        <item>СДК Роствертол</item>
-        <item>Молодежь</item>
+        <item>СДК РостВертол</item>
+        <item>Молодежь РостВертола</item>
+        <item>Прочее</item>
     </string-array>
 
 

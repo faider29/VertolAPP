@@ -54,32 +54,32 @@
         <Spinner
             android:id="@+id/spinner_select_news"
             android:layout_width="173dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:background="#0000"
             android:dropDownWidth="wrap_content"
+            android:gravity="center"
             android:spinnerMode="dropdown"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:gravity="center"
-            android:background="#0000"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
             android:id="@+id/spinner_select_month"
-            android:layout_width="73dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="12dp"
             android:background="#0000"
             android:spinnerMode="dropdown"
             app:layout_constraintBottom_toBottomOf="@+id/spinner_select_news"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/spinner_select_news"
-            app:layout_constraintTop_toTopOf="@+id/spinner_select_news" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
 
     </android.support.constraint.ConstraintLayout>
 
