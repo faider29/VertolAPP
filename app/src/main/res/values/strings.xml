@@ -2,15 +2,29 @@
     <string name="app_name">Роствертол</string>
 
 
-    <string name="title_news">News</string>
-    <string name="title_sold">Sold</string>
-    <string name="title_events">Events</string>
-    <string name="title_newspaper">Newspaper</string>
-    <string name="title_others">Others</string>
+    <string name="title_news">Новости</string>
+    <string name="title_sold">Услуги</string>
+    <string name="title_events">Календарь</string>
+    <string name="title_newspaper">Газета</string>
+
+    <string name="title_others">Прочее</string>
     <string name="fck_strela">ФСК Стрела</string>
-    <string name="cdk_rostov">СДК Роствертол</string>
-    <string name="youth">Молодежь</string>
+    <string name="cdk_rostov">СДК РостВертол</string>
+    <string name="youth">Молодежь РостВертола</string>
     <string name="phone_book">Телефонная книга</string>
+
+    <string name="december">Декабрь</string>
+    <string name="january">Январь</string>
+    <string name="february">Февраль</string>
+    <string name="march">Март</string>
+    <string name="april">Апрель</string>
+    <string name="may">Май</string>
+    <string name="june">Июнь</string>
+    <string name="july">Июль</string>
+    <string name="august">Август</string>
+    <string name="september">Сентябрь</string>
+    <string name="october">Октябрь</string>
+    <string name="november">Ноябрь</string>
 
 
     <string-array name="dropdown_month">
@@ -34,7 +48,6 @@
         <item>ФСК Стрела</item>
         <item>СДК РостВертол</item>
         <item>Молодежь РостВертола</item>
-        <item>Прочее</item>
     </string-array>
 
 

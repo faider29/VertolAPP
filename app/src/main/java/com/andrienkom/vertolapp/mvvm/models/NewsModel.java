@@ -2,6 +2,7 @@ package com.andrienkom.vertolapp.mvvm.models;
 
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.andrienkom.vertolapp.entities.News;
 import com.andrienkom.vertolapp.network.NetworkRepository;
@@ -70,8 +71,16 @@ public class NewsModel {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 Log.d(TAG, "onResponse: " + call.request().toString());
-                for (MainModelListener listener: mListeners) {
+                try {
+
+
+                    for (MainModelListener listener : mListeners) {
                         listener.articlesListLoad(News.getNewsFromJson(response.body()));
+                    }
+                }catch (ClassCastException e){
+                    for (MainModelListener listener: mListeners) {
+                        listener.error(e.getMessage());
+                    }
                 }
             }
 

@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import com.andrienkom.vertolapp.mvvm.fragments.FragmentChooseMonth;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentEvents;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentNews;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentOther;
@@ -42,21 +43,20 @@ public class MainActivity extends AppCompatActivity {
         bnv.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.navigation_news:
-                    setTitle("Новости");
+
                     addFragment(FragmentNews.newInstance());
                     break;
                 case R.id.navigation_sold:
-                    setTitle("Скидки");
+
                     addFragment(FragmentSold.newInstance());
                     break;
                 case R.id.navigation_events:
-                    setTitle("События");
+
                     addFragment(FragmentEvents.newInstance());
                     break;
                 case R.id.navigation_newspaper:
                     break;
                 case R.id.navigation_others:
-                    setTitle("Другое");
                     addFragment(FragmentOther.newInstance());
                     break;
             }

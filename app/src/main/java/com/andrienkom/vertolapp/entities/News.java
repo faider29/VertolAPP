@@ -1,6 +1,9 @@
 package com.andrienkom.vertolapp.entities;
 
 
+import android.content.Context;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -11,7 +14,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class News implements Serializable {
+public class News  implements Serializable {
+
+
 
 
     private String title;
@@ -25,7 +30,8 @@ public class News implements Serializable {
 
     private String date;
 
-    public News() {}
+    public News() {
+    }
 
 
     public String getTitle() {
@@ -63,13 +69,16 @@ public class News implements Serializable {
     /**
      * Да, сущность не должна уметь себя парсить
      * но я считаю что должна.
+     *
      * @param response - на вход получаем сырой JSON
      * @return - если удачно распарсили, то возвращаем список обьектов
      * @throws JSONException - если словили exception, то прокидываем его вызывающему методу
      */
-    public static List<News> getNewsFromJson(JsonObject response) {
+    public static List<News> getNewsFromJson(JsonObject response) throws ClassCastException{
+
         List<News> newsList = new ArrayList<>();
         Gson gson = new Gson();
+
         JsonArray array = response.getAsJsonArray("result");
 
         for (int i = 0; i < array.size(); i++) {
@@ -77,11 +86,16 @@ public class News implements Serializable {
             newsList.add(news);
         }
 
-        return newsList;
+
+
+            return newsList;
+        }
+
+        @Override
+        public String toString () {
+            return " title: " + title + " text: " + text + " date: " + date;
+        }
+
+
     }
 
-    @Override
-    public String toString() {
-        return  " title: " + title + " text: " + text + " date: " + date;
-    }
-}

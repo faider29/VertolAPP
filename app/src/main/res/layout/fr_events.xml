@@ -21,12 +21,25 @@
             android:id="@+id/fr_events_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="События"
+            android:text="@string/title_events"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_select_month"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#0000"
+            android:spinnerMode="dialog"
+            app:layout_constraintBottom_toBottomOf="@+id/fr_events_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fr_events_label"
+            app:layout_constraintTop_toTopOf="@+id/fr_events_label" />
 
 
 

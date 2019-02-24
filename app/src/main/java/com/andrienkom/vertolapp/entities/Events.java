@@ -54,6 +54,8 @@ public class Events implements Serializable {
         this.date = date;
     }
 
+
+
     public static List<Events> getEventsFromJson(JsonObject response) {
         List<Events> eventsList = new ArrayList<>();
         Gson gson = new Gson();

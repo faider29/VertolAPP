@@ -20,7 +20,7 @@
             android:id="@+id/fr_news_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Новости"
+            android:text="@string/title_news"
             android:visibility="invisible"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +79,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/spinner_select_news"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
     </android.support.constraint.ConstraintLayout>
 

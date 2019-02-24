@@ -22,7 +22,7 @@
             android:id="@+id/fr_sold_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Акции"
+            android:text="@string/title_sold"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

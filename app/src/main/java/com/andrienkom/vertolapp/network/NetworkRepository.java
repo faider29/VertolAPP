@@ -68,17 +68,6 @@ public class NetworkRepository {
         j.enqueue(callback);
     }
 
-   /* public void getNewsFrom(Callback<JsonObject> callback, Consts.Category category, String month) {
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(Consts.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create());
-        Retrofit retrofit = builder.build();
-
-        final Api api = retrofit.create(Api.class);
-
-        Call<JsonObject> j = api.getNewsUser(category.toString(), month);
-        j.enqueue(callback);
-    }*/
 
 
     /**

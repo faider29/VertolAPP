@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.entities.News;
@@ -71,7 +72,7 @@ public class FragmentNews extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-       /* mSpinnerSelectNews.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.dropdown_select_news)));
+        mSpinnerSelectNews.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.dropdown_select_news)));
         mSpinnerSelectNews.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -83,7 +84,7 @@ public class FragmentNews extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });*/
+        });
 
        ArrayAdapter<String> spinneradapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item_news,getResources().getStringArray(R.array.dropdown_select_news));
        spinneradapter.setDropDownViewResource(R.layout.spiner_dropdown_item_news);
@@ -147,6 +148,7 @@ public class FragmentNews extends Fragment {
 
         LiveData<String> error = mViewModel.getError();
         error.observe(getActivity(), errorMessage -> {
+            Toast.makeText(getContext(),"Ошибка!!!",Toast.LENGTH_LONG).show();
 
         });
     }
