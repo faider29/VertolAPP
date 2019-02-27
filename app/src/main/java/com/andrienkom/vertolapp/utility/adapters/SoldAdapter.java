@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andrienkom.vertolapp.R;
-import com.andrienkom.vertolapp.entities.Events;
 import com.andrienkom.vertolapp.entities.Sold;
 import com.andrienkom.vertolapp.utility.Consts;
 import com.squareup.picasso.Picasso;
@@ -38,7 +37,7 @@ public class SoldAdapter extends RecyclerView.Adapter<SoldAdapter.SoldHolder> {
     @NonNull
     @Override
     public SoldHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_sold, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_service, viewGroup, false);
         return new SoldHolder(view);
     }
 

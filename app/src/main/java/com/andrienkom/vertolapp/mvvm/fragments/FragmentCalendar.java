@@ -14,17 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Events;
 import com.andrienkom.vertolapp.mvvm.viewModels.EventsViewModel;
+import com.andrienkom.vertolapp.utility.Consts;
 import com.andrienkom.vertolapp.utility.adapters.EventsAdapter;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,7 @@ import java.util.Objects;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class FragmentEvents extends Fragment {
+public class FragmentCalendar extends Fragment {
 
 
     private RecyclerView mRecyclerView;
@@ -41,41 +40,49 @@ public class FragmentEvents extends Fragment {
 
     private View mToolbar;
     private TextView mTitleTV;
-    private Spinner mSpinnerSelectMonth;
+    private Spinner mSpinnerSelectCategory;
+
+    private Consts.Month mEvents;
+
 
     private EventsViewModel mEventsViewModel;
+    private static final String DESCRIBABLE_KEY = "describable_key";
 
 
-    public static FragmentEvents newInstance(){
-        return new FragmentEvents();
+    public static FragmentCalendar newInstance(Consts.Month event){
+        FragmentCalendar fragment = new FragmentCalendar();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(DESCRIBABLE_KEY, event);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.fr_events,container,false);
+       View view = inflater.inflate(R.layout.fr_calendar,container,false);
+       mEvents = (Consts.Month) getArguments().getSerializable(DESCRIBABLE_KEY);
 
        mToolbar = view.findViewById(R.id.fr_events_custom_toolbar);
        mTitleTV = view.findViewById(R.id.fr_events_label);
-       mSpinnerSelectMonth = view.findViewById(R.id.spinner_select_month);
+       mSpinnerSelectCategory = view.findViewById(R.id.spinner_select_category);
 
        mEventsAdapter = new EventsAdapter(getContext(),mEventsList);
 
        mEventsAdapter.setOnItemClickListener((position, events) -> ((MainActivity) Objects.requireNonNull(getActivity()))
-               .addFragmentToBackStack(FragmentReadEvents.newInstance(events)));
+               .addFragmentToBackStack(FragmentReadCalendar.newInstance(events)));
 
        mRecyclerView = view.findViewById(R.id.rv_events);
        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
        mRecyclerView.setAdapter(mEventsAdapter);
 
-
-        ArrayAdapter<String> spinnerAdapterMonth = new ArrayAdapter<String>(getContext(),R.layout.spiner_item_month,getResources().getStringArray(R.array.dropdown_month));
-        spinnerAdapterMonth.setDropDownViewResource(R.layout.spiner_dropdown_item_month);
-        mSpinnerSelectMonth.setAdapter(spinnerAdapterMonth);
-        mSpinnerSelectMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item_news,getResources().getStringArray(R.array.dropdown_select_news));
+        spinnerAdapter.setDropDownViewResource(R.layout.spiner_dropdown_item_news);
+        mSpinnerSelectCategory.setAdapter(spinnerAdapter);
+        mSpinnerSelectCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                mEventsViewModel.getEventsFrom(position);
             }
 
             @Override
@@ -84,9 +91,8 @@ public class FragmentEvents extends Fragment {
             }
         });
 
-        Log.d(TAG, "onCreateView: onCreateView() ");
-
-       observe();
+        observe();
+        mEventsViewModel.getEventsFromMonth(mEvents);
        return view;
     }
 
@@ -104,7 +110,7 @@ public class FragmentEvents extends Fragment {
 
         LiveData<String> error = mEventsViewModel.getError();
         error.observe(getActivity(), errorMessage -> {
-
+            ((MainActivity) getActivity()).showError("Извините, в выбранной категори ничего нету");
         });
     }
 }

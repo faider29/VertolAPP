@@ -4,24 +4,14 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.andrienkom.vertolapp.mvvm.fragments.FragmentCalendar;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentChooseMonth;
-import com.andrienkom.vertolapp.mvvm.fragments.FragmentEvents;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentNews;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentOther;
-import com.andrienkom.vertolapp.mvvm.fragments.FragmentReadFsk;
-import com.andrienkom.vertolapp.mvvm.fragments.FragmentSold;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.andrienkom.vertolapp.mvvm.fragments.FragmentService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_sold:
 
-                    addFragment(FragmentSold.newInstance());
+                    addFragment(FragmentService.newInstance());
                     break;
                 case R.id.navigation_events:
 
-                    addFragment(FragmentEvents.newInstance());
+                    addFragment(FragmentChooseMonth.newInstance());
                     break;
                 case R.id.navigation_newspaper:
                     break;
@@ -85,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
                 .add(R.id.container, fragment)
                 .addToBackStack(backStateName)
                 .commit();
+    }
+
+    public void showError(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
 

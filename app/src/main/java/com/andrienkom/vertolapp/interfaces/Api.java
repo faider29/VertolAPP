@@ -23,9 +23,9 @@ public interface Api  {
      */
 
 //    @POST ("GetNews?category=Category&month=Month")
-    @POST ("GetNews?")
+    @POST ("GetEvents?")
     @FormUrlEncoded
-    Call<JsonObject> getNewsUser(
+    Call<JsonObject> getEventsUser(
         @Field( "category") String category,
         @Field( "month") String month
     );
@@ -34,8 +34,11 @@ public interface Api  {
     Call<JsonObject> getSoldUser();
 
 
-    @GET("GetEvents")
-    Call<JsonObject> getEventsUser();
+    @POST("GetNews?")
+    @FormUrlEncoded
+    Call<JsonObject> getNews(
+            @Field("category") String category
+    );
 
 
     /**

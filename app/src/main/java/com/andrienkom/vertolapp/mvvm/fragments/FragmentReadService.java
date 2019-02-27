@@ -10,14 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Sold;
 import com.andrienkom.vertolapp.utility.Consts;
 import com.squareup.picasso.Picasso;
 
 
-public class FragmentReadSold extends Fragment {
+public class FragmentReadService extends Fragment {
 
     private ImageView mImageView;
     private TextView mHeader;
@@ -34,20 +33,20 @@ public class FragmentReadSold extends Fragment {
     public Sold sold;
 
 
-    public static FragmentReadSold newInstance(Sold sold){
-        FragmentReadSold fragmentReadSold = new FragmentReadSold();
+    public static FragmentReadService newInstance(Sold sold){
+        FragmentReadService fragmentReadService = new FragmentReadService();
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(SOLD_KEY, sold);
-        fragmentReadSold.setArguments(bundle);
-        return  fragmentReadSold;
+        fragmentReadService.setArguments(bundle);
+        return fragmentReadService;
     }
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fr_read_sold,container,false);
+        View view = inflater.inflate(R.layout.fr_read_service,container,false);
         sold = (Sold) getArguments().getSerializable(SOLD_KEY);
 
 

@@ -16,7 +16,7 @@ import com.andrienkom.vertolapp.utility.Consts;
 import com.squareup.picasso.Picasso;
 
 
-public class FragmentReadEvents extends Fragment {
+public class FragmentReadCalendar extends Fragment {
 
     private static final String EVENTS_KEY = "events_key";
 
@@ -37,20 +37,20 @@ public class FragmentReadEvents extends Fragment {
 
 
 
-    public static FragmentReadEvents newInstance(Events events){
-        FragmentReadEvents fragmentReadEvents = new FragmentReadEvents();
+    public static FragmentReadCalendar newInstance(Events events){
+        FragmentReadCalendar fragmentReadCalendar = new FragmentReadCalendar();
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(EVENTS_KEY,  events);
-        fragmentReadEvents.setArguments(bundle);
+        fragmentReadCalendar.setArguments(bundle);
 
-        return fragmentReadEvents;
+        return fragmentReadCalendar;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.fr_read_events, container, false);
+       View view = inflater.inflate(R.layout.fr_read_calendar, container, false);
         events = (Events) getArguments().getSerializable(EVENTS_KEY);
 
         mToolbar = view.findViewById(R.id.fr_read_events_custom_toolbar);

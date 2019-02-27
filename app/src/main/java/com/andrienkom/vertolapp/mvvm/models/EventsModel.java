@@ -3,6 +3,7 @@ package com.andrienkom.vertolapp.mvvm.models;
 import com.andrienkom.vertolapp.entities.Events;
 import com.andrienkom.vertolapp.interfaces.EventsModelListener;
 import com.andrienkom.vertolapp.network.NetworkRepository;
+import com.andrienkom.vertolapp.utility.Consts;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class EventsModel {
     }
 
     public void start(){
-        NetworkRepository.getInstance().getEvents(mCallback);
+//        NetworkRepository.getInstance().getEventsFrom(mCallback);
     }
 
 
@@ -43,8 +44,14 @@ public class EventsModel {
         mCallback = new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                for (EventsModelListener listener: mListeners) {
-                    listener.eventsListLoad(Events.getEventsFromJson(response.body()));
+                try {
+                    for (EventsModelListener listener: mListeners) {
+                        listener.eventsListLoad(Events.getEventsFromJson(response.body()));
+                    }
+                }catch (ClassCastException e){
+                    for (EventsModelListener listener: mListeners) {
+                        listener.error(e.getMessage());
+                    }
                 }
             }
 
@@ -56,6 +63,10 @@ public class EventsModel {
                 }
             }
         };
+    }
+
+    public void getEventsFrom(Consts.Category category, Consts.Month month) {
+        NetworkRepository.getInstance().getEventsFrom(mCallback, category, month);
     }
 
 }

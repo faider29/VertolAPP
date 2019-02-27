@@ -77,7 +77,7 @@ public class FragmentNews extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "onItemSelected: " + getResources().getStringArray(R.array.dropdown_select_news)[position]);
-                mViewModel.getNewsFrom(position);
+//                mViewModel.getNewsFrom(position);
             }
 
             @Override
@@ -92,7 +92,7 @@ public class FragmentNews extends Fragment {
        mSpinnerSelectNews.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
            @Override
            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               mViewModel.getNewsFrom(position);
+               mViewModel.getNewsFromCategory(position);
            }
 
            @Override
@@ -100,26 +100,6 @@ public class FragmentNews extends Fragment {
 
            }
        });
-
-
-       //mSpinnerSelectMonth.setAdapter(new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.dropdown_month)));
-
-       ArrayAdapter<String> spinnerAdapterMonth = new ArrayAdapter<String>(getContext(),R.layout.spiner_item_month,getResources().getStringArray(R.array.dropdown_month));
-       spinnerAdapterMonth.setDropDownViewResource(R.layout.spiner_dropdown_item_month);
-       mSpinnerSelectMonth.setAdapter(spinnerAdapterMonth);
-       mSpinnerSelectMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-           @Override
-           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               mViewModel.getNewsFromMonth(position);
-
-           }
-
-           @Override
-           public void onNothingSelected(AdapterView<?> parent) {
-
-           }
-       });
-
 
         mBack.setOnClickListener(v -> {
             getActivity().onBackPressed();
@@ -148,7 +128,7 @@ public class FragmentNews extends Fragment {
 
         LiveData<String> error = mViewModel.getError();
         error.observe(getActivity(), errorMessage -> {
-            Toast.makeText(getContext(),"Ошибка!!!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),"Извинте, в выбранном месяце нету новостей",Toast.LENGTH_LONG).show();
 
         });
     }

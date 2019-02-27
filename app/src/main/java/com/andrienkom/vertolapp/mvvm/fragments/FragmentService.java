@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andrienkom.vertolapp.MainActivity;
@@ -21,13 +20,11 @@ import com.andrienkom.vertolapp.entities.Sold;
 import com.andrienkom.vertolapp.mvvm.viewModels.SoldViewModel;
 import com.andrienkom.vertolapp.utility.adapters.SoldAdapter;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class FragmentSold extends Fragment {
+public class FragmentService extends Fragment {
 
     private RecyclerView mRecyclerView;
     private SoldAdapter mAdapter;
@@ -41,18 +38,18 @@ public class FragmentSold extends Fragment {
 
     private SoldViewModel mViewModel;
 
-    private static String TAG = FragmentSold.class.getSimpleName();
+    private static String TAG = FragmentService.class.getSimpleName();
 
 
-    public static FragmentSold newInstance(){
-        return new FragmentSold();
+    public static FragmentService newInstance(){
+        return new FragmentService();
     }
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fr_sold,container,false);
+        View view = inflater.inflate(R.layout.fr_service,container,false);
 
 
         mToolbar = view.findViewById(R.id.fr_sold_custom_toolbar);
@@ -60,7 +57,7 @@ public class FragmentSold extends Fragment {
 
         mAdapter = new SoldAdapter(getContext(), mSoldList);
         mAdapter.setOnItemClickListener((position, sold) -> {
-            ((MainActivity) getActivity()).addFragmentToBackStack(FragmentReadSold.newInstance(sold));
+            ((MainActivity) getActivity()).addFragmentToBackStack(FragmentReadService.newInstance(sold));
         });
         mRecyclerView = view.findViewById(R.id.rv_sold);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -85,6 +82,11 @@ public class FragmentSold extends Fragment {
         error.observe(getActivity(), errorMessage -> {
 
         });
+
+        
     }
+
+
+
 }
 

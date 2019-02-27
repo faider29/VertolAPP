@@ -56,7 +56,7 @@ public class Events implements Serializable {
 
 
 
-    public static List<Events> getEventsFromJson(JsonObject response) {
+    public static List<Events> getEventsFromJson(JsonObject response) throws ClassCastException{
         List<Events> eventsList = new ArrayList<>();
         Gson gson = new Gson();
         JsonArray array = response.getAsJsonArray("result");

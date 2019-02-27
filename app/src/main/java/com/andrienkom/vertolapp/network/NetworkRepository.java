@@ -48,23 +48,22 @@ public class NetworkRepository {
 
        final Api api = retrofit.create(Api.class);
 
-       Call<JsonObject> j = api.getNewsUser(Consts.Category.all.toString(), "null");
-       j.enqueue(callback);
+//       Call<JsonObject> j = api.getNewsUser(Consts.Category.all.toString(), "null");
+//       j.enqueue(callback);
    }
 
     /**
      * retrofit FSK News
      * @param callback
      */
-    public void getNewsFrom(Callback<JsonObject> callback, Consts.Category category, Consts.Month month) {
+    public void getEventsFrom(Callback<JsonObject> callback, Consts.Category category, Consts.Month month) {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(Consts.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
 
         final Api api = retrofit.create(Api.class);
-        Log.d(TAG, "getNewsFrom: " + category.toString() + "/" + month.toString());
-        Call<JsonObject> j = api.getNewsUser(category.toString(), month.toString());
+        Call<JsonObject> j = api.getEventsUser(category.toString(), month.toString());
         j.enqueue(callback);
     }
 
@@ -89,7 +88,7 @@ public class NetworkRepository {
     /**
      * retrofit Events
      */
-    public void getEvents(Callback<JsonObject> callback) {
+    public void getNewsFromCategory(Callback<JsonObject> callback, Consts.Category category) {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(Consts.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create());
@@ -97,7 +96,7 @@ public class NetworkRepository {
 
         final Api api = retrofit.create(Api.class);
 
-        Call<JsonObject> j = api.getEventsUser();
+        Call<JsonObject> j = api.getNews(category.toString());
         j.enqueue(callback);
     }
 

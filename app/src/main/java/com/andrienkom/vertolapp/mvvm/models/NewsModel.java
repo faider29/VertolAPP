@@ -38,12 +38,9 @@ public class NewsModel {
     }
 
 
-    public void getNewsFrom(Consts.Category category, Consts.Month month) {
-        NetworkRepository.getInstance().getNewsFrom(mCallback, category, month);
+    public void getNewsFrom(Consts.Category category) {
+        NetworkRepository.getInstance().getNewsFromCategory(mCallback, category);
     }
-  /*  public void getNewsFrom(Consts.Category category, String month) {
-        NetworkRepository.getInstance().getNewsFrom(mCallback, category, month);
-    }*/
 
 
     /**
@@ -72,7 +69,6 @@ public class NewsModel {
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 Log.d(TAG, "onResponse: " + call.request().toString());
                 try {
-
 
                     for (MainModelListener listener : mListeners) {
                         listener.articlesListLoad(News.getNewsFromJson(response.body()));
