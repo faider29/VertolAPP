@@ -53,21 +53,21 @@ public class FragmentReadCalendar extends Fragment {
        View view = inflater.inflate(R.layout.fr_read_calendar, container, false);
         events = (Events) getArguments().getSerializable(EVENTS_KEY);
 
-        mToolbar = view.findViewById(R.id.fr_read_events_custom_toolbar);
-        mBtnBack = view.findViewById(R.id.fr_read_events_btn_back);
-        mTextView = view.findViewById(R.id.fr_read_events_label);
+        mToolbar = view.findViewById(R.id.fr_read_calendar_custom_toolbar);
+        mBtnBack = view.findViewById(R.id.fr_read_calendar_btn_back);
+        mTextView = view.findViewById(R.id.fr_read_calendar_label);
 
 
-        mHeader = view.findViewById(R.id.tv_read_header_events);
+        mHeader = view.findViewById(R.id.tv_read_header_calendar);
         mHeader.setText(events.getTitle());
 
-        mText = view.findViewById(R.id.tv_read_text_events);
+        mText = view.findViewById(R.id.tv_read_text_calendar);
         mText.setText(events.getText());
 
-        mDate = view.findViewById(R.id.tv_read_date_events);
+        mDate = view.findViewById(R.id.tv_read_date_calendar);
         mDate.setText(events.getDate());
 
-        mImageView = view.findViewById(R.id.iv_read_events);
+        mImageView = view.findViewById(R.id.iv_read_calendar);
         Picasso.get()
                 .load(Consts.BASE_URL + events.getImg())
                 .error(R.drawable.error)

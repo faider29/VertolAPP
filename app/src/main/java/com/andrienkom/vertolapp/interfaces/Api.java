@@ -4,25 +4,19 @@ package com.andrienkom.vertolapp.interfaces;
 import com.andrienkom.vertolapp.entities.Other;
 import com.google.gson.JsonObject;
 
-
-import java.util.List;
-
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 public interface Api  {
 
     /**
-     * Получение всей инфы
+     * Получение Событий календаря
      * @return
      */
 
-//    @POST ("GetNews?category=Category&month=Month")
     @POST ("GetEvents?")
     @FormUrlEncoded
     Call<JsonObject> getEventsUser(
@@ -30,9 +24,18 @@ public interface Api  {
         @Field( "month") String month
     );
 
+    /**
+     * Получения Услуг
+     * @return
+     */
     @GET("GetDiscounts")
     Call<JsonObject> getSoldUser();
 
+    /**
+     * Получение Новостей
+     * @param category
+     * @return
+     */
 
     @POST("GetNews?")
     @FormUrlEncoded

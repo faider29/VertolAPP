@@ -1,12 +1,10 @@
 package com.andrienkom.vertolapp.network;
 
 
-import android.util.Log;
 
 import com.andrienkom.vertolapp.interfaces.Api;
 import com.andrienkom.vertolapp.utility.Consts;
 import com.google.gson.JsonObject;
-
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,13 +45,28 @@ public class NetworkRepository {
        Retrofit retrofit = builder.build();
 
        final Api api = retrofit.create(Api.class);
-
 //       Call<JsonObject> j = api.getNewsUser(Consts.Category.all.toString(), "null");
-//       j.enqueue(callback);
+//   j.enqueue(callback);
    }
 
+
     /**
-     * retrofit FSK News
+     * retrofit NewsCategory
+     */
+    public void getNewsFromCategory(Callback<JsonObject> callback, Consts.Category category) {
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(Consts.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit = builder.build();
+
+        final Api api = retrofit.create(Api.class);
+
+        Call<JsonObject> j = api.getNews(category.toString());
+        j.enqueue(callback);
+    }
+
+    /**
+     * retrofit Calendar
      * @param callback
      */
     public void getEventsFrom(Callback<JsonObject> callback, Consts.Category category, Consts.Month month) {
@@ -70,7 +83,7 @@ public class NetworkRepository {
 
 
     /**
-     * Retrofit Sold
+     * Retrofit Service
      * @param callback
      */
     public void getSold(Callback<JsonObject> callback) {
@@ -85,20 +98,7 @@ public class NetworkRepository {
         j.enqueue(callback);
     }
 
-    /**
-     * retrofit Events
-     */
-    public void getNewsFromCategory(Callback<JsonObject> callback, Consts.Category category) {
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(Consts.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create());
-        Retrofit retrofit = builder.build();
 
-        final Api api = retrofit.create(Api.class);
-
-        Call<JsonObject> j = api.getNews(category.toString());
-        j.enqueue(callback);
-    }
 
 
 }

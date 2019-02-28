@@ -39,40 +39,40 @@ public class FragmentChooseMonth extends Fragment {
     }
 
     private void initViews() {
-        mView.findViewById(R.id.btn_fr_events_december).setOnClickListener(view -> {
+        mView.findViewById(R.id.btn_fr_calendar_december).setOnClickListener(view -> {
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.december));
         });
-        mView.findViewById(R.id.btn_fr_events_january).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_january).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.january));
         });
-        mView.findViewById(R.id.btn_fr_events_february).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_february).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.february));
         });
-        mView.findViewById(R.id.btn_fr_events_march).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_march).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.march));
         });
-        mView.findViewById(R.id.btn_fr_events_april).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_april).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.april));
         });
-        mView.findViewById(R.id.btn_fr_events_may).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_may).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.may));
         });
-        mView.findViewById(R.id.btn_fr_events_june).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_june).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.june));
         });
-        mView.findViewById(R.id.btn_fr_events_july).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_july).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.july));
         });
-        mView.findViewById(R.id.btn_fr_events_august).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_august).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.august));
         });
-        mView.findViewById(R.id.btn_fr_events_september).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_september).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.september));
         });
-        mView.findViewById(R.id.btn_fr_events_october).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_october).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.october));
         });
-        mView.findViewById(R.id.btn_fr_events_november).setOnClickListener(view ->{
+        mView.findViewById(R.id.btn_fr_calendar_november).setOnClickListener(view ->{
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.november));
         });
     }

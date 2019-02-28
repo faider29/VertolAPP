@@ -10,7 +10,7 @@
 
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/fr_sold_custom_toolbar"
+        android:id="@+id/fr_service_custom_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/title_toolbar"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/fr_sold_label"
+            android:id="@+id/fr_service_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_sold"
@@ -34,13 +34,13 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_sold"
+        android:id="@+id/rv_service"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fr_sold_custom_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/fr_service_custom_toolbar" />
 
 
 </android.support.constraint.ConstraintLayout>

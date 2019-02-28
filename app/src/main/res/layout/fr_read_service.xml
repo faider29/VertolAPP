@@ -9,7 +9,7 @@
 
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/fr_read_sold_custom_toolbar"
+        android:id="@+id/fr_read_service_custom_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/title_toolbar"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/fr_read_sold_label"
+            android:id="@+id/fr_read_service_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Акции"
@@ -31,14 +31,14 @@
 
 
         <ImageView
-            android:id="@+id/fr_read_sold_btn_back"
+            android:id="@+id/fr_read_service_btn_back"
             android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/fr_read_sold_label"
+            app:layout_constraintBottom_toBottomOf="@+id/fr_read_service_label"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/fr_read_sold_label"
+            app:layout_constraintTop_toTopOf="@+id/fr_read_service_label"
             android:src="@drawable/ic_arrow_back_black_24dp" />
 
 
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fr_read_sold_custom_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/fr_read_service_custom_toolbar"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
@@ -61,7 +61,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_read_header_sold"
+                android:id="@+id/tv_read_header_service"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -73,10 +73,10 @@
                 android:textStyle="bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_read_sold" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_read_service" />
 
             <TextView
-                android:id="@+id/tv_read_date_sold"
+                android:id="@+id/tv_read_date_service"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -86,10 +86,10 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_read_text_sold" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_read_text_service" />
 
             <ImageView
-                android:id="@+id/iv_read_sold"
+                android:id="@+id/iv_read_service"
                 android:layout_width="match_parent"
                 android:layout_height="169dp"
                 android:layout_marginStart="16dp"
@@ -102,7 +102,7 @@
                 android:scaleType="centerCrop"/>
 
             <TextView
-                android:id="@+id/tv_read_text_sold"
+                android:id="@+id/tv_read_text_service"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -114,7 +114,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_read_text_sold" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_read_text_service" />
 
         </LinearLayout>
 

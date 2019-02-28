@@ -52,14 +52,14 @@ public class FragmentService extends Fragment {
         View view = inflater.inflate(R.layout.fr_service,container,false);
 
 
-        mToolbar = view.findViewById(R.id.fr_sold_custom_toolbar);
-        mLabel = view.findViewById(R.id.fr_sold_label);
+        mToolbar = view.findViewById(R.id.fr_service_custom_toolbar);
+        mLabel = view.findViewById(R.id.fr_service_label);
 
         mAdapter = new SoldAdapter(getContext(), mSoldList);
         mAdapter.setOnItemClickListener((position, sold) -> {
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentReadService.newInstance(sold));
         });
-        mRecyclerView = view.findViewById(R.id.rv_sold);
+        mRecyclerView = view.findViewById(R.id.rv_service);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
         observe();

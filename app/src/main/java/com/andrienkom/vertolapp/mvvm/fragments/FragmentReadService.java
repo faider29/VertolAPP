@@ -51,20 +51,20 @@ public class FragmentReadService extends Fragment {
 
 
 
-        mToolbar = view.findViewById(R.id.fr_read_sold_custom_toolbar);
-        mBtnBack = view.findViewById(R.id.fr_read_sold_btn_back);
-        mLabel = view.findViewById(R.id.fr_read_sold_label);
+        mToolbar = view.findViewById(R.id.fr_read_service_custom_toolbar);
+        mBtnBack = view.findViewById(R.id.fr_read_service_btn_back);
+        mLabel = view.findViewById(R.id.fr_read_service_label);
 
-        mHeader = view.findViewById(R.id.tv_read_header_sold);
+        mHeader = view.findViewById(R.id.tv_read_header_service);
         mHeader.setText(sold.getTitle());
 
-        mText = view.findViewById(R.id.tv_read_text_sold);
+        mText = view.findViewById(R.id.tv_read_text_service);
         mText.setText(sold.getText());
 
-        mDate = view.findViewById(R.id.tv_read_date_sold);
+        mDate = view.findViewById(R.id.tv_read_date_service);
         mDate.setText(sold.getDate());
 
-        mImageView = view.findViewById(R.id.iv_read_sold);
+        mImageView = view.findViewById(R.id.iv_read_service);
         Picasso.get()
                 .load(Consts.BASE_URL + sold.getImg())
                 .error(R.drawable.error)

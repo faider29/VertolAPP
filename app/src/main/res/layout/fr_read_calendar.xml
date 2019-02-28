@@ -8,7 +8,7 @@
 
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/fr_read_events_custom_toolbar"
+        android:id="@+id/fr_read_calendar_custom_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/title_toolbar"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/fr_read_events_label"
+            android:id="@+id/fr_read_calendar_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="События"
@@ -29,15 +29,15 @@
 
 
         <ImageView
-            android:id="@+id/fr_read_events_btn_back"
+            android:id="@+id/fr_read_calendar_btn_back"
             android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:src="@drawable/ic_arrow_back_black_24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/fr_read_events_label"
+            app:layout_constraintBottom_toBottomOf="@+id/fr_read_calendar_label"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/fr_read_events_label" />
+            app:layout_constraintTop_toTopOf="@+id/fr_read_calendar_label" />
 
 
     </android.support.constraint.ConstraintLayout>
@@ -48,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fr_read_events_custom_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/fr_read_calendar_custom_toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,7 +56,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_read_header_events"
+                android:id="@+id/tv_read_header_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -68,10 +68,10 @@
                 android:textStyle="bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_read_events" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_read_calendar" />
 
             <TextView
-                android:id="@+id/tv_read_date_events"
+                android:id="@+id/tv_read_date_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -81,10 +81,10 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_read_text_events" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_read_text_calendar" />
 
             <ImageView
-                android:id="@+id/iv_read_events"
+                android:id="@+id/iv_read_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="169dp"
                 android:layout_marginStart="16dp"
@@ -98,7 +98,7 @@
 
 
             <TextView
-                android:id="@+id/tv_read_text_events"
+                android:id="@+id/tv_read_text_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -110,7 +110,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_read_header_events" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_read_header_calendar" />
 
         </LinearLayout>
 

@@ -9,7 +9,7 @@
 
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/fr_events_custom_toolbar"
+        android:id="@+id/fr_calendar_custom_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/title_toolbar"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/fr_events_label"
+            android:id="@+id/fr_calendar_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_events"
@@ -60,7 +60,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fr_events_custom_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/fr_calendar_custom_toolbar" />
 
 
 </android.support.constraint.ConstraintLayout>

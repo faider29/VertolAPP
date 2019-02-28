@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/fr_events_label"
+            android:id="@+id/fr_calendar_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_events"
@@ -47,7 +47,7 @@
             android:background="#000000">
 
             <TextView
-                android:id="@+id/btn_fr_events_december"
+                android:id="@+id/btn_fr_calendar_december"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
@@ -58,7 +58,7 @@
                 />
 
             <TextView
-                android:id="@+id/btn_fr_events_january"
+                android:id="@+id/btn_fr_calendar_january"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
@@ -70,7 +70,7 @@
                 />
 
             <TextView
-                android:id="@+id/btn_fr_events_february"
+                android:id="@+id/btn_fr_calendar_february"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
@@ -90,7 +90,7 @@
             android:background="#000000">
 
             <TextView
-                android:id="@+id/btn_fr_events_march"
+                android:id="@+id/btn_fr_calendar_march"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_column="0"
@@ -101,7 +101,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/btn_fr_events_april"
+                android:id="@+id/btn_fr_calendar_april"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
@@ -112,7 +112,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/btn_fr_events_may"
+                android:id="@+id/btn_fr_calendar_may"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
@@ -131,7 +131,7 @@
             android:background="#000000">
 
             <TextView
-                android:id="@+id/btn_fr_events_june"
+                android:id="@+id/btn_fr_calendar_june"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_column="0"
@@ -142,7 +142,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/btn_fr_events_july"
+                android:id="@+id/btn_fr_calendar_july"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
@@ -153,7 +153,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/btn_fr_events_august"
+                android:id="@+id/btn_fr_calendar_august"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"
@@ -172,7 +172,7 @@
             android:background="#000000">
 
             <TextView
-                android:id="@+id/btn_fr_events_september"
+                android:id="@+id/btn_fr_calendar_september"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_column="0"
@@ -183,7 +183,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/btn_fr_events_october"
+                android:id="@+id/btn_fr_calendar_october"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
@@ -194,7 +194,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/btn_fr_events_november"
+                android:id="@+id/btn_fr_calendar_november"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="2"

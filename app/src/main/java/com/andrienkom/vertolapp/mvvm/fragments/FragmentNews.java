@@ -37,10 +37,8 @@ public class FragmentNews extends Fragment {
 
     private TextView mTitleTV;
     private View mToolbar;
-    private ImageView mCalendar;
     private ImageView mBack;
     private Spinner mSpinnerSelectNews;
-    private Spinner mSpinnerSelectMonth;
 
 
     private NewsViewModel mViewModel;
@@ -60,10 +58,8 @@ public class FragmentNews extends Fragment {
 
         mTitleTV = view.findViewById(R.id.fr_news_label);
         mToolbar = view.findViewById(R.id.fr_news_custom_toolbar);
-        //mCalendar = view.findViewById(R.id.fr_news_btn_calendar);
         mBack = view.findViewById(R.id.fr_news_btn_back);
         mSpinnerSelectNews = view.findViewById(R.id.spinner_select_news);
-        mSpinnerSelectMonth = view.findViewById(R.id.spinner_select_month);
 
         mAdapter = new NewsAdapter(getContext(), mNewsList);
         mAdapter.setOnItemClickListener((position, news) ->
@@ -72,23 +68,9 @@ public class FragmentNews extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-        mSpinnerSelectNews.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.dropdown_select_news)));
-        mSpinnerSelectNews.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(TAG, "onItemSelected: " + getResources().getStringArray(R.array.dropdown_select_news)[position]);
-//                mViewModel.getNewsFrom(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-       ArrayAdapter<String> spinneradapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item_news,getResources().getStringArray(R.array.dropdown_select_news));
-       spinneradapter.setDropDownViewResource(R.layout.spiner_dropdown_item_news);
-       mSpinnerSelectNews.setAdapter(spinneradapter);
+       ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item_news,getResources().getStringArray(R.array.dropdown_select_news));
+       spinnerAdapter.setDropDownViewResource(R.layout.spiner_dropdown_item_news);
+       mSpinnerSelectNews.setAdapter(spinnerAdapter);
        mSpinnerSelectNews.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
            @Override
            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -128,7 +110,7 @@ public class FragmentNews extends Fragment {
 
         LiveData<String> error = mViewModel.getError();
         error.observe(getActivity(), errorMessage -> {
-            Toast.makeText(getContext(),"Извинте, в выбранном месяце нету новостей",Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),"Выбранная категория не заполнена",Toast.LENGTH_LONG).show();
 
         });
     }
