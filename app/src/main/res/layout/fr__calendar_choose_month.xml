@@ -32,9 +32,10 @@
     <TableLayout
         android:id="@+id/month_table"
         android:layout_width="0dp"
-        android:layout_height="560dp"
+        android:layout_height="0dp"
         android:gravity="center"
         android:stretchColumns="0,1,2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fr_events_choose_month_custom_toolbar">
@@ -54,8 +55,7 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="@string/december"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/btn_fr_calendar_january"
@@ -66,8 +66,7 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="@string/january"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/btn_fr_calendar_february"
@@ -78,8 +77,7 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="@string/february"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
 
         <TableRow

@@ -4,7 +4,7 @@ import com.andrienkom.vertolapp.entities.Events;
 
 import java.util.List;
 
-public interface EventsModelListener {
+public interface CalendarModelListener {
 
         void eventsListLoad(List<Events> entityEvents);
 

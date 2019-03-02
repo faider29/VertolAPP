@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_newspaper:
                     break;
                 case R.id.navigation_others:
+
                     addFragment(FragmentOther.newInstance());
                     break;
             }

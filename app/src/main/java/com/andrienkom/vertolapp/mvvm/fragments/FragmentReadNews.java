@@ -25,7 +25,7 @@ public class FragmentReadNews extends Fragment {
     private TextView mDate;
 
 
-    private View mToolbar;
+//    private View mToolbar;
     private ImageView mBtnBack;
     private TextView mLabel;
 
@@ -49,7 +49,7 @@ public class FragmentReadNews extends Fragment {
         news = (News) getArguments().getSerializable(DESCRIBABLE_KEY);
 
 
-        mToolbar = view.findViewById(R.id.fr_news_custom_toolbar);
+//        mToolbar = view.findViewById(R.id.fr_read_news_custom_toolbar);
         mBtnBack = view.findViewById(R.id.fr_news_btn_back);
         mLabel = view.findViewById(R.id.fr_news_label);
 

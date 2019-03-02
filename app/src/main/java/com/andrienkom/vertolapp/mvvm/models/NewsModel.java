@@ -67,7 +67,6 @@ public class NewsModel {
         mCallback = new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                Log.d(TAG, "onResponse: " + call.request().toString());
                 try {
 
                     for (MainModelListener listener : mListeners) {

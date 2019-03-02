@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Events;
-import com.andrienkom.vertolapp.mvvm.viewModels.EventsViewModel;
+import com.andrienkom.vertolapp.mvvm.viewModels.CalendarViewModel;
 import com.andrienkom.vertolapp.utility.Consts;
 import com.andrienkom.vertolapp.utility.adapters.EventsAdapter;
 
@@ -38,11 +40,13 @@ public class FragmentCalendar extends Fragment {
     private TextView mTitleTV;
     private Spinner mSpinnerSelectCategory;
 
-    private Consts.Month mEvents;
 
-
-    private EventsViewModel mEventsViewModel;
+    private CalendarViewModel mEventsViewModel;
     private static final String DESCRIBABLE_KEY = "describable_key";
+
+    private static String TAG = FragmentCalendar.class.getSimpleName();
+
+    private Consts.Month mCurMonth;
 
 
     public static FragmentCalendar newInstance(Consts.Month event){
@@ -57,7 +61,7 @@ public class FragmentCalendar extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fr_calendar,container,false);
-       mEvents = (Consts.Month) getArguments().getSerializable(DESCRIBABLE_KEY);
+       mCurMonth = (Consts.Month) getArguments().getSerializable(DESCRIBABLE_KEY);
 
        mToolbar = view.findViewById(R.id.fr_calendar_custom_toolbar);
        mTitleTV = view.findViewById(R.id.fr_calendar_label);
@@ -78,7 +82,8 @@ public class FragmentCalendar extends Fragment {
         mSpinnerSelectCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                mEventsViewModel.getEventsFrom(position);
+
+                mEventsViewModel.getEventsFrom(position, mCurMonth);
             }
 
             @Override
@@ -88,15 +93,15 @@ public class FragmentCalendar extends Fragment {
         });
 
         observe();
-        mEventsViewModel.getEventsFromMonth(mEvents);
        return view;
     }
 
 
     private void observe() {
-        mEventsViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(EventsViewModel.class);
+        mEventsViewModel = ViewModelProviders.of((this)).get(CalendarViewModel.class);
         LiveData<List<Events>> events = mEventsViewModel.getEvents();
         events.observe(getActivity(), eventsList -> {
+            Log.d(TAG, "observe: " + eventsList.size());
             mEventsList.clear();
             mEventsList.addAll(eventsList);
             mEventsAdapter.notifyDataSetChanged();
@@ -106,7 +111,9 @@ public class FragmentCalendar extends Fragment {
 
         LiveData<String> error = mEventsViewModel.getError();
         error.observe(getActivity(), errorMessage -> {
-            ((MainActivity) getActivity()).showError("Извините, в выбранной категори ничего нету");
+
+            if (getActivity() != null)
+            ((MainActivity) getActivity()).showError("Месяц не заполнен");
         });
     }
 }

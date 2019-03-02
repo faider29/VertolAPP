@@ -1,7 +1,9 @@
 package com.andrienkom.vertolapp.mvvm.models;
 
+import android.util.Log;
+
 import com.andrienkom.vertolapp.entities.Events;
-import com.andrienkom.vertolapp.interfaces.EventsModelListener;
+import com.andrienkom.vertolapp.interfaces.CalendarModelListener;
 import com.andrienkom.vertolapp.network.NetworkRepository;
 import com.andrienkom.vertolapp.utility.Consts;
 import com.google.gson.JsonObject;
@@ -17,24 +19,21 @@ public class EventsModel {
 
     private Callback<JsonObject> mCallback;
 
-    private List<EventsModelListener> mListeners = new ArrayList<>();
+    private List<CalendarModelListener> mListeners = new ArrayList<>();
 
     public EventsModel(){
         initCallback();
     }
 
-    public void start(){
-//        NetworkRepository.getInstance().getEventsFrom(mCallback);
-    }
 
 
 
-    public void addListener(EventsModelListener listener){
+    public void addListener(CalendarModelListener listener){
         mListeners.add(listener);
     }
 
 
-    public void removeListener(EventsModelListener listener){
+    public void removeListener(CalendarModelListener listener){
         mListeners.remove(listener);
     }
 
@@ -45,11 +44,11 @@ public class EventsModel {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 try {
-                    for (EventsModelListener listener: mListeners) {
+                    for (CalendarModelListener listener: mListeners) {
                         listener.eventsListLoad(Events.getEventsFromJson(response.body()));
                     }
                 }catch (ClassCastException e){
-                    for (EventsModelListener listener: mListeners) {
+                    for (CalendarModelListener listener: mListeners) {
                         listener.error(e.getMessage());
                     }
                 }
@@ -58,7 +57,7 @@ public class EventsModel {
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 t.printStackTrace();
-                for (EventsModelListener listener: mListeners) {
+                for (CalendarModelListener listener: mListeners) {
                     listener.error(t.getMessage());
                 }
             }
