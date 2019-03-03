@@ -5,9 +5,10 @@
     <string name="title_news">Новости</string>
     <string name="title_sold">Услуги</string>
     <string name="title_events">Календарь</string>
+    <string name="title_others">Прочее</string>
     <string name="title_newspaper">Газета</string>
 
-    <string name="title_others">Прочее</string>
+
     <string name="fck_strela">ФСК Стрела</string>
     <string name="cdk_rostov">СДК РостВертол</string>
     <string name="youth">Молодежь РостВертола</string>

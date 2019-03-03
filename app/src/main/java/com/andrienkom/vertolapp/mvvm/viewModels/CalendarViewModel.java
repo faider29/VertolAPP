@@ -2,18 +2,17 @@ package com.andrienkom.vertolapp.mvvm.viewModels;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.util.Log;
 
 import com.andrienkom.vertolapp.entities.Events;
 import com.andrienkom.vertolapp.interfaces.CalendarModelListener;
-import com.andrienkom.vertolapp.mvvm.models.EventsModel;
+import com.andrienkom.vertolapp.mvvm.models.CalendarModel;
 import com.andrienkom.vertolapp.utility.Consts;
 
 import java.util.List;
 
 public class CalendarViewModel extends ViewModel implements CalendarModelListener {
 
-    private EventsModel mEventsModel;
+    private CalendarModel mEventsModel;
 //
 //    private Consts.Category mCategory = Consts.Category.all;
 //    private Consts.Month mSelectMonth = Consts.Month.january;
@@ -23,7 +22,7 @@ public class CalendarViewModel extends ViewModel implements CalendarModelListene
     private MutableLiveData<Boolean> mIsLoad = new MutableLiveData<>();
 
     public CalendarViewModel(){
-        mEventsModel = new EventsModel();
+        mEventsModel = new CalendarModel();
         mEventsModel.addListener(this);
         mIsLoad.postValue(true);
     }

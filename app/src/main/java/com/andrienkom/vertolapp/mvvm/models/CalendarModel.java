@@ -15,13 +15,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EventsModel {
+public class CalendarModel {
 
     private Callback<JsonObject> mCallback;
 
     private List<CalendarModelListener> mListeners = new ArrayList<>();
 
-    public EventsModel(){
+    public CalendarModel(){
         initCallback();
     }
 

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentCalendar;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentChooseMonth;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentNews;
+import com.andrienkom.vertolapp.mvvm.fragments.FragmentNewspaper;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentOther;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentService;
 
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
                     addFragment(FragmentChooseMonth.newInstance());
                     break;
                 case R.id.navigation_newspaper:
+
+                    addFragment(FragmentNewspaper.newInstance());
                     break;
                 case R.id.navigation_others:
 
