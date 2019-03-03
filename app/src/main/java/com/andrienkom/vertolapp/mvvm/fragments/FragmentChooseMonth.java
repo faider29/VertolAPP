@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
+import com.andrienkom.vertolapp.entities.Events;
 import com.andrienkom.vertolapp.utility.Consts;
 
 
@@ -19,6 +21,7 @@ public class FragmentChooseMonth extends Fragment {
     private View mToolbar;
     private TableLayout mTableLayout;
     private View mView;
+    private Events mEvents;
 
 
     public static FragmentChooseMonth newInstance(){
@@ -43,9 +46,12 @@ public class FragmentChooseMonth extends Fragment {
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.december));
         });
         mView.findViewById(R.id.btn_fr_calendar_january).setOnClickListener(view ->{
-            ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.january));
+//           if (){
+               ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.january));
+//           }
         });
         mView.findViewById(R.id.btn_fr_calendar_february).setOnClickListener(view ->{
+
             ((MainActivity) getActivity()).addFragmentToBackStack(FragmentCalendar.newInstance(Consts.Month.february));
         });
         mView.findViewById(R.id.btn_fr_calendar_march).setOnClickListener(view ->{

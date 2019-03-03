@@ -41,7 +41,7 @@ public class FragmentCalendar extends Fragment {
     private Spinner mSpinnerSelectCategory;
 
 
-    private CalendarViewModel mEventsViewModel;
+    private CalendarViewModel mCalendarViewModel;
     private static final String DESCRIBABLE_KEY = "describable_key";
 
     private static String TAG = FragmentCalendar.class.getSimpleName();
@@ -83,7 +83,7 @@ public class FragmentCalendar extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                mEventsViewModel.getEventsFrom(position, mCurMonth);
+                mCalendarViewModel.getEventsFrom(position, mCurMonth);
             }
 
             @Override
@@ -98,8 +98,8 @@ public class FragmentCalendar extends Fragment {
 
 
     private void observe() {
-        mEventsViewModel = ViewModelProviders.of((this)).get(CalendarViewModel.class);
-        LiveData<List<Events>> events = mEventsViewModel.getEvents();
+        mCalendarViewModel = ViewModelProviders.of((this)).get(CalendarViewModel.class);
+        LiveData<List<Events>> events = mCalendarViewModel.getEvents();
         events.observe(getActivity(), eventsList -> {
             Log.d(TAG, "observe: " + eventsList.size());
             mEventsList.clear();
@@ -109,7 +109,7 @@ public class FragmentCalendar extends Fragment {
 
         });
 
-        LiveData<String> error = mEventsViewModel.getError();
+        LiveData<String> error = mCalendarViewModel.getError();
         error.observe(getActivity(), errorMessage -> {
 
             if (getActivity() != null)
