@@ -10,8 +10,8 @@
 
 
     <string name="fck_strela">ФСК Стрела</string>
-    <string name="cdk_rostov">СДК РостВертол</string>
-    <string name="youth">Молодежь РостВертола</string>
+    <string name="cdk_rostov">СДК Роствертол</string>
+    <string name="youth">Молодежь Роствертола</string>
     <string name="phone_book">Телефонная книга</string>
 
     <string name="december">Декабрь</string>
@@ -46,9 +46,9 @@
 
     <string-array name="dropdown_select_news">
         <item>Все</item>
-        <item>ФСК Стрела</item>
-        <item>СДК РостВертол</item>
-        <item>Молодежь РостВертола</item>
+        <item>ФСК Стрела </item>
+        <item>СДК Роствертол</item>
+        <item>Молодежь Роствертола</item>
     </string-array>
 
 
