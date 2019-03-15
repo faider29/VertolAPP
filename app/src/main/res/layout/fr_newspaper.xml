@@ -32,8 +32,31 @@
 
     </android.support.constraint.ConstraintLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_newspaper_issue"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:scrollbars="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fr_newspaper_custom_toolbar">
 
-    <TextView
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_newspaper_news"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_newspaper_issue">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+   <!-- <TextView
         android:id="@+id/tv_newspaper_working"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="24sp"/>
+        android:textSize="24sp"/>-->
 
 
 </android.support.constraint.ConstraintLayout>
