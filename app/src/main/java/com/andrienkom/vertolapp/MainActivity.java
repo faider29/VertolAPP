@@ -6,8 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-
-import com.andrienkom.vertolapp.mvvm.fragments.FragmentCalendar;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentChooseMonth;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentNews;
 import com.andrienkom.vertolapp.mvvm.fragments.FragmentNewspaper;
@@ -23,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_main);
-
-
-
 
 
 

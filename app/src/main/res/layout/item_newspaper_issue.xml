@@ -24,7 +24,7 @@
                 android:id="@+id/tv_newspaper_issue_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+
                 android:layout_marginTop="8dp"
                 android:text="Номер выпуска"
                 android:textColor="@color/colorBlack"

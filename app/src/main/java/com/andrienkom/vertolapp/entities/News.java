@@ -1,9 +1,6 @@
 package com.andrienkom.vertolapp.entities;
 
 
-import android.content.Context;
-import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

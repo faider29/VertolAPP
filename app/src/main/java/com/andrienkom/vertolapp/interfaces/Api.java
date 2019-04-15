@@ -68,5 +68,12 @@ public interface Api  {
             @Field("Category") String category
     );
 
+    /**
+     * Список выпусков
+     * @return
+     */
+    @GET ("GetIssues")
+    Call<JsonObject> getIssues();
+
 
 }

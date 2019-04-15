@@ -1,5 +1,6 @@
 package com.andrienkom.vertolapp.utility;
 
+
 public abstract class Consts {
 
     public static final String BASE_URL = "http://46.229.215.224:9999/api/";

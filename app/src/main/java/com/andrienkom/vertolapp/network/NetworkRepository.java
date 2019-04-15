@@ -94,11 +94,28 @@ public class NetworkRepository {
 
         final Api api = retrofit.create(Api.class);
 
+
         Call<JsonObject> j = api.getSoldUser();
         j.enqueue(callback);
     }
 
+    /**
+     * Retrofit on Issues
+     * @param callback
+     */
+    public void getIssues(Callback<JsonObject> callback){
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(Consts.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create());
 
+        Retrofit retrofitIssues = builder.build();
+
+        final Api api = retrofitIssues.create(Api.class);
+
+        Call<JsonObject> j = api.getIssues();
+        j.enqueue(callback);
+
+    }
 
 
 }
