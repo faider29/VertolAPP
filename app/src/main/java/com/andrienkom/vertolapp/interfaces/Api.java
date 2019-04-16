@@ -76,4 +76,13 @@ public interface Api  {
     Call<JsonObject> getIssues();
 
 
+    /**
+     * Список новостей по выпуску
+     */
+    @POST("GetArticles?id=")
+    @FormUrlEncoded
+    Call<JsonObject> getArticles(
+            @Field("id") String id
+    );
+
 }

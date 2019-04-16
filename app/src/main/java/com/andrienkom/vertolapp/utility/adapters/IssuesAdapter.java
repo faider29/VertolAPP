@@ -18,7 +18,7 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssuesHold
 
     private Context mContext;
     private List<Issues> mIssuesList;
-    private static String TAG = IssuesAdapter.class.getSimpleName();
+   // private static String TAG = IssuesAdapter.class.getSimpleName();
 
 
     private List<OnItemClickListener> mOnItemClickListeners;

@@ -54,7 +54,7 @@ public class FragmentNewspaper extends Fragment {
         mRVHorizontal.setAdapter(mIssuesAdapter);
 
 
-       // mRVVertical = view.findViewById(R.id.rv_newspaper_news);
+       mRVVertical = view.findViewById(R.id.rv_newspaper_news);
 
 
 
