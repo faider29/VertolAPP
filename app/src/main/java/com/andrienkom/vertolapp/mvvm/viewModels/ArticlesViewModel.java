@@ -13,22 +13,18 @@ public class ArticlesViewModel extends ViewModel implements ArticlesModelListene
 
     private ArticlesModel mArticlesModel;
 
-    public ArticlesViewModel(){
-        mArticlesModel = new ArticlesModel();
-        mArticlesModel.addListener(this);
-        mIsLoad.postValue(true);
-        mArticlesModel.start();
-    }
-
-
     private MutableLiveData<List<Articles>> mArticles = new MutableLiveData<>();
     private MutableLiveData<String> mError = new MutableLiveData<>();
     private MutableLiveData<Boolean> mIsLoad = new MutableLiveData<>();
 
 
 
-
-
+    public ArticlesViewModel(String id){
+        mArticlesModel = new ArticlesModel();
+        mArticlesModel.addListener(this);
+        mIsLoad.postValue(true);
+        mArticlesModel.start(id);
+    }
 
 
     @Override
@@ -43,5 +39,23 @@ public class ArticlesViewModel extends ViewModel implements ArticlesModelListene
         mIsLoad.postValue(false);
         mError.postValue("Внимание произошла ошибка: \n" + errorMessage);
 
+    }
+
+    @Override
+    protected void onCleared() {
+        mArticlesModel.removeListener(this);
+        mArticlesModel = null;
+        super.onCleared();
+    }
+
+
+    public MutableLiveData<List<Articles>> getArticles(){
+        return mArticles;
+    }
+    public MutableLiveData<String> getError(){
+        return mError;
+    }
+    public MutableLiveData<Boolean> getIsLoad(){
+        return mIsLoad;
     }
 }

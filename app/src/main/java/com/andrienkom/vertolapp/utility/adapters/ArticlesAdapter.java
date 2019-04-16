@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Articles;
@@ -23,7 +24,6 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.Articl
         mContext = context;
         mArticlesList = articlesList;
         mOnItemClickListeners = new ArrayList<>();
-
     }
 
 
@@ -36,6 +36,14 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.Articl
 
     @Override
     public void onBindViewHolder(@NonNull ArticleHolder articleHolder, int i) {
+        articleHolder.setTextView(mArticlesList.get(i).getTitle());
+        articleHolder.setClickListener(view ->{
+            if (mOnItemClickListeners.size() != 0 && mArticlesList != null){
+                for (OnItemClickListener l: mOnItemClickListeners){
+                    l.OnItemClick(i, mArticlesList.get(i));
+                }
+            }
+        });
 
     }
 
@@ -44,12 +52,26 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.Articl
         return mArticlesList == null ? 0 : mArticlesList.size();
     }
 
-    public class ArticleHolder extends RecyclerView.ViewHolder {
 
+
+    public class ArticleHolder extends RecyclerView.ViewHolder {
+        private TextView mTextView;
+        private View mView;
 
         public ArticleHolder(@NonNull View itemView) {
             super(itemView);
+            mView = itemView;
+            mTextView = itemView.findViewById(R.id.tv_newspaper_news_header);
         }
+
+        public void setTextView(String textView) {
+            mTextView.setText(textView);
+        }
+        public void setClickListener(View.OnClickListener listener){
+            mView.setOnClickListener(listener);
+
+        }
+
     }
 
     public interface OnItemClickListener{
