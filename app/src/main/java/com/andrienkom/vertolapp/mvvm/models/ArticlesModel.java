@@ -1,5 +1,7 @@
 package com.andrienkom.vertolapp.mvvm.models;
 
+import android.util.Log;
+
 import com.andrienkom.vertolapp.entities.Articles;
 import com.andrienkom.vertolapp.interfaces.ArticlesModelListener;
 import com.andrienkom.vertolapp.network.NetworkRepository;
@@ -21,8 +23,8 @@ public class ArticlesModel {
         initCallback();
     }
 
-    public void start(String id){
-        NetworkRepository.getInstance().getArticles(mCallback, id);
+    public void start(){
+        NetworkRepository.getInstance().getArticles(mCallback);
     }
 
     public void addListener(ArticlesModelListener listener){
@@ -38,6 +40,7 @@ public class ArticlesModel {
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 for (ArticlesModelListener listener: mListeners){
                     listener.articlesListLoad(Articles.getArticlesFromJson(response.body()));
+                    Log.d("onResponseArticles ", "onResponseArticles: " + response.body());
                 }
 
             }

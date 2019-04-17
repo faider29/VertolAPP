@@ -19,11 +19,11 @@ public class ArticlesViewModel extends ViewModel implements ArticlesModelListene
 
 
 
-    public ArticlesViewModel(String id){
+    public ArticlesViewModel(){
         mArticlesModel = new ArticlesModel();
         mArticlesModel.addListener(this);
         mIsLoad.postValue(true);
-        mArticlesModel.start(id);
+        mArticlesModel.start();
     }
 
 

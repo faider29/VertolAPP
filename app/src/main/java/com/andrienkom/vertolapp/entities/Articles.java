@@ -1,5 +1,7 @@
 package com.andrienkom.vertolapp.entities;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -13,9 +15,17 @@ public class Articles implements Serializable {
     public Articles(){}
 
     private List<Articles> mArticlesList;
+    private String id;
 
     private String title;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -32,6 +42,8 @@ public class Articles implements Serializable {
         for (int i = 0; i<jsonArray.size();i++){
             Articles articles = gson.fromJson(jsonArray.get(i),Articles.class);
             articlesList.add(articles);
+            Log.d("getArticlesFromJson", "getArticlesFromJson: " + response.getAsJsonArray("result"));
+
         }
 
         return articlesList;
@@ -40,6 +52,8 @@ public class Articles implements Serializable {
 
     @Override
     public String toString() {
-        return "title: " +title;
+        return "id: " + id + "title: " +title;
     }
+
+
 }

@@ -1,5 +1,7 @@
 package com.andrienkom.vertolapp.mvvm.models;
 
+import android.util.Log;
+
 import com.andrienkom.vertolapp.entities.Issues;
 import com.andrienkom.vertolapp.interfaces.IssuesModelListener;
 import com.andrienkom.vertolapp.network.NetworkRepository;
@@ -39,6 +41,9 @@ public class IssuesModel {
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 for (IssuesModelListener listener: mListeners){
                     listener.issuesListLoad(Issues.getIssuesFromJson(response.body()));
+
+
+                    Log.d("onResponseIssues ", "onResponseIssues: " + response.body());
                 }
 
             }

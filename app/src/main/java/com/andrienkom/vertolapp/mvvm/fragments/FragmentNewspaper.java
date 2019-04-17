@@ -56,9 +56,10 @@ public class FragmentNewspaper extends Fragment {
 
         mToolbar = view.findViewById(R.id.fr_newspaper_custom_toolbar);
         mIssuesAdapter = new IssuesAdapter(getContext(), mIssuesList);
+        mArticlesAdapter = new ArticlesAdapter(getContext(),mArticlesList);
 
         mRVHorizontal = view.findViewById(R.id.rv_newspaper_issue);
-        mRVHorizontal.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,true));
+        mRVHorizontal.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         mRVHorizontal.setAdapter(mIssuesAdapter);
 
 
@@ -71,7 +72,7 @@ public class FragmentNewspaper extends Fragment {
 
 
         observeIssues();
-        observeArticles();
+       observeArticles();
         return view;
     }
     private void observeIssues(){

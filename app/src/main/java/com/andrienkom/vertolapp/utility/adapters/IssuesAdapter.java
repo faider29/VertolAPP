@@ -40,6 +40,7 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssuesHold
     @Override
     public void onBindViewHolder(@NonNull IssuesHolder issuesHolder, int i) {
         issuesHolder.setTextView(mIssuesList.get(i).getName());
+       // issuesHolder.setTextView(mIssuesList.get(i).getId());
         issuesHolder.setClickListener(view ->{
             if (mOnItemClickListeners.size() != 0 && mIssuesList != null){
                 for (OnItemClickListener l : mOnItemClickListeners){

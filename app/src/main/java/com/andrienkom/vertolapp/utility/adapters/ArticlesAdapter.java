@@ -37,6 +37,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.Articl
     @Override
     public void onBindViewHolder(@NonNull ArticleHolder articleHolder, int i) {
         articleHolder.setTextView(mArticlesList.get(i).getTitle());
+      //  articleHolder.setTextView(mArticlesList.get(i).getId());
         articleHolder.setClickListener(view ->{
             if (mOnItemClickListeners.size() != 0 && mArticlesList != null){
                 for (OnItemClickListener l: mOnItemClickListeners){

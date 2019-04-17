@@ -1,5 +1,7 @@
 package com.andrienkom.vertolapp.entities;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -12,7 +14,7 @@ public class Issues implements Serializable {
 
     private List<Issues> issuesList;
 
-    private String id;
+    private String issues_id;
 
     private String name;
 
@@ -21,11 +23,11 @@ public class Issues implements Serializable {
     }
 
     public String getId() {
-        return id;
+        return issues_id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.issues_id = id;
     }
 
     public String getName() {
@@ -41,6 +43,7 @@ public class Issues implements Serializable {
         List<Issues> issuesList = new ArrayList<>();
         Gson gson = new Gson();
         JsonArray array = response.getAsJsonArray("result");
+        Log.d("getIssuesFromJson", "getIssuesFromJson: " + response.getAsJsonArray("result"));
         for (int i=0; i< array.size();i++){
             Issues issues = gson.fromJson(array.get(i),Issues.class);
             issuesList.add(issues);
@@ -49,8 +52,11 @@ public class Issues implements Serializable {
     }
 
 
+
+
+
     @Override
     public String toString() {
-        return "id: " + id + "name: " + name;
+        return "id: " + issues_id + "name: " + name;
     }
 }
