@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.andrienkom.vertolapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/> // доступ в интернет
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"

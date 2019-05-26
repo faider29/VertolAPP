@@ -80,8 +80,11 @@ public interface Api  {
      * Список новостей по выпуску
      */
 
-    @GET ("GetArticles")
-    Call<JsonObject> getArticles();
+    @POST ("GetArticles?id=")
+    @FormUrlEncoded
+    Call<JsonObject> getArticles(
+            @Field("id") String id
+    );
     //List<ArticlesModel> getArticles();
 
 }

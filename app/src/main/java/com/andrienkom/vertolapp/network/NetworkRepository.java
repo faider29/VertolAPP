@@ -117,22 +117,23 @@ public class NetworkRepository {
 
     }
 
+
     /**
      * Retrofit on Articles
      */
-
-    public void getArticles(Callback<JsonObject> callback){
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(Consts.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create());
-
-        Retrofit retrofitArticles = builder.build();
-
-        final Api api = retrofitArticles.create(Api.class);
-
-        Call<JsonObject> j = api.getArticles();
-        j.enqueue(callback);
-    }
+//
+//    public void getArticles(Callback<JsonObject> callback, String id){
+//        Retrofit.Builder builder = new Retrofit.Builder()
+//                .baseUrl(Consts.BASE_URL)
+//                .addConverterFactory(GsonConverterFactory.create());
+//
+//        Retrofit retrofitArticles = builder.build();
+//
+//        final Api api = retrofitArticles.create(Api.class);
+//
+//        Call<JsonObject> j = api.getArticles(id);
+//        j.enqueue(callback);
+//    }
 
 
 }

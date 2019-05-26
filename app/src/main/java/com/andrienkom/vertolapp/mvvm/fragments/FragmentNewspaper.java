@@ -17,8 +17,7 @@ import android.view.ViewGroup;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Articles;
 import com.andrienkom.vertolapp.entities.Issues;
-import com.andrienkom.vertolapp.mvvm.viewModels.ArticlesViewModel;
-import com.andrienkom.vertolapp.mvvm.viewModels.IssuesViewModel;
+import com.andrienkom.vertolapp.mvvm.viewModels.NewspaperViewModel;
 import com.andrienkom.vertolapp.utility.adapters.ArticlesAdapter;
 import com.andrienkom.vertolapp.utility.adapters.IssuesAdapter;
 
@@ -32,10 +31,9 @@ public class FragmentNewspaper extends Fragment {
     private RecyclerView mRVHorizontal;
     private RecyclerView mRVVertical;
 
-    private IssuesViewModel mIssuesViewModel;
-    private IssuesAdapter mIssuesAdapter;
+    private NewspaperViewModel mNewspaperViewModel;
 
-    private ArticlesViewModel mArticlesViewModel;
+    private IssuesAdapter mIssuesAdapter;
     private ArticlesAdapter mArticlesAdapter;
 
     private List<Articles> mArticlesList = new ArrayList<>();
@@ -67,42 +65,39 @@ public class FragmentNewspaper extends Fragment {
        mRVVertical.setLayoutManager(new LinearLayoutManager(getContext()));
        mRVVertical.setAdapter(mArticlesAdapter);
 
-
-
-
+//        mIssuesAdapter.setOnClickLister(position -> {
+//           mArticlesViewModel.getIssuesFromId(mArticlesList.get(position).getId());
+//       });
 
         observeIssues();
-       observeArticles();
+        observeArticles();
         return view;
     }
+
     private void observeIssues(){
-        mIssuesViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
-                .get(IssuesViewModel.class);
-        LiveData<List<Issues>> issues = mIssuesViewModel.getIssues();
-        issues.observe(getActivity(),issuesList ->{
+        mNewspaperViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
+                .get(NewspaperViewModel.class);
+        LiveData<List<Issues>> issues = mNewspaperViewModel.getIssues();
+        issues.observe(getActivity(),issuesList -> {
             mIssuesList.clear();
             mIssuesList.addAll(issuesList);
             mIssuesAdapter.notifyDataSetChanged();
-            Log.d(TAG, "observeIssues: " + issuesList.size());
-        });
-        LiveData<String> error = mIssuesViewModel.getError();
-        error.observe(getActivity(),errorMessage ->{
-
+            Log.d(TAG, "observeIssues: "+ issuesList.size());
         });
     }
 
 
     private void observeArticles(){
-        mArticlesViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
-                .get(ArticlesViewModel.class);
-        LiveData<List<Articles>> articles = mArticlesViewModel.getArticles();
+        mNewspaperViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
+                .get(NewspaperViewModel.class);
+        LiveData<List<Articles>> articles = mNewspaperViewModel.getArticles();
         articles.observe(getActivity(),articlesList -> {
             mArticlesList.clear();
             mArticlesList.addAll(articlesList);
             mArticlesAdapter.notifyDataSetChanged();
             Log.d(TAG, "observeArticles: " + articlesList.size());
         });
-        LiveData<String> error = mArticlesViewModel.getError();
+        LiveData<String> error = mNewspaperViewModel.getError();
         error.observe(getActivity(),errorMessage ->{
 
         });
