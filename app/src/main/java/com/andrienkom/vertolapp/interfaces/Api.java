@@ -85,6 +85,5 @@ public interface Api  {
     Call<JsonObject> getArticles(
             @Field("id") String id
     );
-    //List<ArticlesModel> getArticles();
 
 }

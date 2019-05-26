@@ -14,7 +14,6 @@ public class Articles implements Serializable {
 
     public Articles(){}
 
-    private List<Articles> mArticlesList;
     private String id;
 
     private String title;

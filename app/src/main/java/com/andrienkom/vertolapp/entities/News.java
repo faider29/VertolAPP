@@ -14,8 +14,6 @@ import java.util.List;
 public class News  implements Serializable {
 
 
-
-
     private String title;
 
 

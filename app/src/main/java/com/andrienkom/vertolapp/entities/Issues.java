@@ -12,9 +12,9 @@ import java.util.List;
 
 public class Issues implements Serializable {
 
-    private List<Issues> issuesList;
 
-    private String issues_id;
+    public static final String TAG = Issues.class.getSimpleName();
+    private int issues_id;
 
     private String name;
 
@@ -22,11 +22,11 @@ public class Issues implements Serializable {
 
     }
 
-    public String getId() {
+    public int getId() {
         return issues_id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.issues_id = id;
     }
 
@@ -43,7 +43,7 @@ public class Issues implements Serializable {
         List<Issues> issuesList = new ArrayList<>();
         Gson gson = new Gson();
         JsonArray array = response.getAsJsonArray("result");
-        Log.d("getIssuesFromJson", "getIssuesFromJson: " + response.getAsJsonArray("result"));
+        Log.d(TAG, "getIssuesFromJson: " + response.getAsJsonArray("result"));
         for (int i=0; i< array.size();i++){
             Issues issues = gson.fromJson(array.get(i),Issues.class);
             issuesList.add(issues);

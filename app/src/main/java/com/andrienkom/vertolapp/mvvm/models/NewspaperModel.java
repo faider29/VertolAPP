@@ -2,6 +2,7 @@ package com.andrienkom.vertolapp.mvvm.models;
 
 import android.util.Log;
 
+import com.andrienkom.vertolapp.entities.Articles;
 import com.andrienkom.vertolapp.entities.Issues;
 import com.andrienkom.vertolapp.interfaces.ArticlesModelListener;
 import com.andrienkom.vertolapp.interfaces.IssuesModelListener;
@@ -23,17 +24,20 @@ public class NewspaperModel {
 
     public static final String TAG = NewspaperModel.class.getSimpleName();
 
-    private Callback<JsonObject> mCallback;
+    private Callback<JsonObject> mCallbackIssues;
+    private Callback<JsonObject> mCallbackArticles;
 
     private List<IssuesModelListener> mListenersIssues = new ArrayList<>();
     private List<ArticlesModelListener> mListenersArticles = new ArrayList<>();
 
     public NewspaperModel(){
         initCallbackIssues();
+        initCallbackIssuesID();
+//        initCallbackArticles(); // если добавить тогда не скачиваются список выпусков
     }
 
     public void start(){
-        NetworkRepository.getInstance().getIssues(mCallback);
+        NetworkRepository.getInstance().getIssues(mCallbackIssues);
     }
 
     public void addListenerIssues(IssuesModelListener issuesModelListener){
@@ -52,11 +56,18 @@ public class NewspaperModel {
 
 
     private void initCallbackIssues() {
-        mCallback = new Callback<JsonObject>() {
+        mCallbackIssues = new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                List<Issues> issues = Issues.getIssuesFromJson(response.body());
+                int lastId = -1;
+                for (Issues issue: issues) {
+                    if (issue.getId() > lastId) lastId = issue.getId();
+                }
+//                if (lastId != -1) getIssuesFromId(lastId);
+                getIssuesFromId(4);
                 for(IssuesModelListener issuesModelListener : mListenersIssues){
-                    issuesModelListener.issuesListLoad(Issues.getIssuesFromJson(response.body()));
+                    issuesModelListener.issuesListLoad(issues);
 
                     Log.d(TAG, "onResponse: " + response.body());
                 }
@@ -71,5 +82,33 @@ public class NewspaperModel {
             }
         };
     }
+
+    private void initCallbackIssuesID() {
+        mCallbackArticles = new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                for (ArticlesModelListener listener: mListenersArticles){
+                    listener.articlesListLoad(Articles.getArticlesFromJson(response.body()));
+                    Log.d("onResponseArticles ", "onResponseArticles: " + response.body());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                t.printStackTrace();
+                for (ArticlesModelListener listener: mListenersArticles){
+                    listener.error(t.getMessage());
+                }
+            }
+        };
+    }
+
+    public void getIssuesFromId(int id) {
+        NetworkRepository.getInstance().getArticles(mCallbackArticles, String.valueOf(id));
+    }
+
+
+
 
 }
