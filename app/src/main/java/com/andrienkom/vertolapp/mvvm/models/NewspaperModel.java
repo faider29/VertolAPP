@@ -60,6 +60,7 @@ public class NewspaperModel {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 List<Issues> issues = Issues.getIssuesFromJson(response.body());
+
                 int lastId = -1;
                 for (Issues issue: issues) {
                     if (issue.getId() > lastId) lastId = issue.getId();

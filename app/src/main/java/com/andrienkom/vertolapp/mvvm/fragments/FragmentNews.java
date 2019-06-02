@@ -20,10 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.andrienkom.vertolapp.MainActivity;
-import com.andrienkom.vertolapp.entities.News;
-import com.andrienkom.vertolapp.utility.adapters.NewsAdapter;
 import com.andrienkom.vertolapp.R;
+import com.andrienkom.vertolapp.entities.News;
 import com.andrienkom.vertolapp.mvvm.viewModels.NewsViewModel;
+import com.andrienkom.vertolapp.utility.adapters.NewsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
