@@ -53,6 +53,10 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.Articl
         return mArticlesList == null ? 0 : mArticlesList.size();
     }
 
+    public void setOnItemClickListeners(OnItemClickListener listeners){
+        mOnItemClickListeners.add(listeners);
+    }
+
 
 
     public class ArticleHolder extends RecyclerView.ViewHolder {
@@ -68,6 +72,7 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.Articl
         public void setTextView(String textView) {
             mTextView.setText(textView);
         }
+
         public void setClickListener(View.OnClickListener listener){
             mView.setOnClickListener(listener);
 

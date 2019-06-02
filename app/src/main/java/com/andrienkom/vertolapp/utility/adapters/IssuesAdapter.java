@@ -56,6 +56,10 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssuesHold
         return mIssuesList == null ? 0 : mIssuesList.size();
     }
 
+    public void setOnItemClickListeners(OnItemClickListener listeners){
+        mOnItemClickListeners.add(listeners);
+    }
+
 
 
     public class IssuesHolder extends RecyclerView.ViewHolder {

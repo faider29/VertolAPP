@@ -18,6 +18,8 @@ public class Articles implements Serializable {
 
     private String title;
 
+    private String text;
+
     public String getId() {
         return id;
     }
@@ -55,4 +57,7 @@ public class Articles implements Serializable {
     }
 
 
+    public String getText() {
+        return text;
+    }
 }

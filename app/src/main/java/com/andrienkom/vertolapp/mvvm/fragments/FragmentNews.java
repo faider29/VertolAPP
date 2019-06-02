@@ -68,8 +68,12 @@ public class FragmentNews extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-       ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getContext(),R.layout.spiner_item_news,getResources().getStringArray(R.array.dropdown_select_news));
+       ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getContext()
+               ,R.layout.spiner_item_news
+               ,getResources().getStringArray(R.array.dropdown_select_news));
+
        spinnerAdapter.setDropDownViewResource(R.layout.spiner_dropdown_item_news);
+
        mSpinnerSelectNews.setAdapter(spinnerAdapter);
        mSpinnerSelectNews.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
            @Override

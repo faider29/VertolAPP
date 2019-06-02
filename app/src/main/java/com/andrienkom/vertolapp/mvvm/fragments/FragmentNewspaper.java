@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Articles;
 import com.andrienkom.vertolapp.entities.Issues;
@@ -68,6 +69,14 @@ public class FragmentNewspaper extends Fragment {
 //        mIssuesAdapter.setOnClickLister(position -> {
 //           mArticlesViewModel.getIssuesFromId(mArticlesList.get(position).getId());
 //       });
+
+        mArticlesAdapter.setOnItemClickListeners((position, articles) -> {
+            ((MainActivity)getActivity()).addFragmentToBackStack(FragmentReadNewspaper.newInstance(articles));
+        });
+
+//        mIssuesAdapter.setOnItemClickListeners((position, issues)-> {
+//
+//        });
 
         observeIssues();
         observeArticles();
