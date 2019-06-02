@@ -65,8 +65,8 @@ public class NewspaperModel {
                 for (Issues issue: issues) {
                     if (issue.getId() > lastId) lastId = issue.getId();
                 }
-//                if (lastId != -1) getIssuesFromId(lastId);
-                getIssuesFromId(4);
+                if (lastId != -1) getIssuesFromId(lastId);
+//                getIssuesFromId(4);
                 for(IssuesModelListener issuesModelListener : mListenersIssues){
                     issuesModelListener.issuesListLoad(issues);
 
@@ -108,8 +108,6 @@ public class NewspaperModel {
     public void getIssuesFromId(int id) {
         NetworkRepository.getInstance().getArticles(mCallbackArticles, String.valueOf(id));
     }
-
-
 
 
 }

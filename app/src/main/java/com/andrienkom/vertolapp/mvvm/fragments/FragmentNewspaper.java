@@ -18,6 +18,7 @@ import com.andrienkom.vertolapp.MainActivity;
 import com.andrienkom.vertolapp.R;
 import com.andrienkom.vertolapp.entities.Articles;
 import com.andrienkom.vertolapp.entities.Issues;
+import com.andrienkom.vertolapp.mvvm.models.NewspaperModel;
 import com.andrienkom.vertolapp.mvvm.viewModels.NewspaperViewModel;
 import com.andrienkom.vertolapp.utility.adapters.ArticlesAdapter;
 import com.andrienkom.vertolapp.utility.adapters.IssuesAdapter;
@@ -33,6 +34,7 @@ public class FragmentNewspaper extends Fragment {
     private RecyclerView mRVVertical;
 
     private NewspaperViewModel mNewspaperViewModel;
+    private NewspaperModel mNewspaperModel;
 
     private IssuesAdapter mIssuesAdapter;
     private ArticlesAdapter mArticlesAdapter;
@@ -70,13 +72,18 @@ public class FragmentNewspaper extends Fragment {
 //           mArticlesViewModel.getIssuesFromId(mArticlesList.get(position).getId());
 //       });
 
+        /**
+         * ДИЧЬ
+         */
+//        mIssuesAdapter.setOnItemClickListeners((position, issues) -> {
+//            mNewspaperViewModel.getArticles();
+//        });
+
         mArticlesAdapter.setOnItemClickListeners((position, articles) -> {
             ((MainActivity)getActivity()).addFragmentToBackStack(FragmentReadNewspaper.newInstance(articles));
         });
 
-//        mIssuesAdapter.setOnItemClickListeners((position, issues)-> {
-//
-//        });
+
 
         observeIssues();
         observeArticles();
