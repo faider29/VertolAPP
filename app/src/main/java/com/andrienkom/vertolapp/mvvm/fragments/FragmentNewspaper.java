@@ -68,9 +68,10 @@ public class FragmentNewspaper extends Fragment {
        mRVVertical.setLayoutManager(new LinearLayoutManager(getContext()));
        mRVVertical.setAdapter(mArticlesAdapter);
 
-//        mIssuesAdapter.setOnClickLister(position -> {
-//           mArticlesViewModel.getIssuesFromId(mArticlesList.get(position).getId());
-//       });
+        mIssuesAdapter.setOnItemClickListeners((position, issues) -> {
+//           mArticlesViewModel.getArticlesFromIssuesID(mArticlesList.get(position).getId());
+            mNewspaperViewModel.getIssuesFromId(issues);
+       });
 
         /**
          * ДИЧЬ

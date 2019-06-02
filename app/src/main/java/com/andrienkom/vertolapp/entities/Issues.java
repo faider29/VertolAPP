@@ -14,7 +14,7 @@ public class Issues implements Serializable {
 
 
     public static final String TAG = Issues.class.getSimpleName();
-    private int issues_id;
+    private String id;
 
     private String name;
 
@@ -23,11 +23,11 @@ public class Issues implements Serializable {
     }
 
     public int getId() {
-        return issues_id;
+        return Integer.valueOf(id);
     }
 
-    public void setId(int id) {
-        this.issues_id = id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -57,6 +57,6 @@ public class Issues implements Serializable {
 
     @Override
     public String toString() {
-        return "id: " + issues_id + "name: " + name;
+        return "id: " + id + "name: " + name;
     }
 }

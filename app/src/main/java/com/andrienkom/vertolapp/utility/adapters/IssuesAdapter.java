@@ -18,7 +18,8 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssuesHold
 
     private Context mContext;
     private List<Issues> mIssuesList;
-   // private static String TAG = IssuesAdapter.class.getSimpleName();
+    private List<IssuesHolder> mHolderList;
+    private static String TAG = IssuesAdapter.class.getSimpleName();
 
 
     private List<OnItemClickListener> mOnItemClickListeners;
@@ -34,7 +35,9 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssuesHold
     @Override
     public IssuesHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_newspaper_issue,viewGroup,false);
-        return new IssuesHolder(view);
+        IssuesHolder holder = new IssuesHolder(view);
+        mHolderList.add(holder);
+        return holder;
     }
 
     @Override
@@ -77,8 +80,20 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssuesHold
             mTextView.setText(textView);
         }
 
+        private void disableView() {
+            mView.setBackgroundColor(1);
+        }
+
+
+
+
+
         public void setClickListener(View.OnClickListener listener){
             mView.setOnClickListener(listener);
+            for (IssuesHolder holder: mHolderList) {
+
+            }
+
         }
     }
 

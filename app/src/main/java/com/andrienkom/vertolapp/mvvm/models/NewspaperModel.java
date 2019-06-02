@@ -59,14 +59,15 @@ public class NewspaperModel {
         mCallbackIssues = new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                Log.d(TAG, "onResponse: " + call.request().toString());
                 List<Issues> issues = Issues.getIssuesFromJson(response.body());
 
                 int lastId = -1;
                 for (Issues issue: issues) {
                     if (issue.getId() > lastId) lastId = issue.getId();
                 }
-                if (lastId != -1) getIssuesFromId(lastId);
-//                getIssuesFromId(4);
+                if (lastId != -1) getArticlesFromIssuesID(lastId);
+//                getArticlesFromIssuesID(4);
                 for(IssuesModelListener issuesModelListener : mListenersIssues){
                     issuesModelListener.issuesListLoad(issues);
 
@@ -88,6 +89,7 @@ public class NewspaperModel {
         mCallbackArticles = new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                Log.d(TAG, "onResponse: " + call.request().toString());
                 for (ArticlesModelListener listener: mListenersArticles){
                     listener.articlesListLoad(Articles.getArticlesFromJson(response.body()));
                     Log.d("onResponseArticles ", "onResponseArticles: " + response.body());
@@ -105,7 +107,7 @@ public class NewspaperModel {
         };
     }
 
-    public void getIssuesFromId(int id) {
+    public void getArticlesFromIssuesID(int id) {
         NetworkRepository.getInstance().getArticles(mCallbackArticles, String.valueOf(id));
     }
 

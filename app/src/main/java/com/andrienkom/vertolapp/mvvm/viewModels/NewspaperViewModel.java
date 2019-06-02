@@ -35,6 +35,10 @@ public class NewspaperViewModel extends ViewModel
         mNewspaperModel.start();
     }
 
+    public void getIssuesFromId(Issues issues) {
+        mNewspaperModel.getArticlesFromIssuesID(issues.getId());
+    }
+
     @Override
     public void articlesListLoad(List<Articles> entityArticles) {
         mIsLoad.postValue(false);
