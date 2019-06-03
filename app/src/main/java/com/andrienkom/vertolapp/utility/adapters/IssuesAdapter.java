@@ -35,9 +35,9 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssuesHold
     @Override
     public IssuesHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_newspaper_issue,viewGroup,false);
-        IssuesHolder holder = new IssuesHolder(view);
-        mHolderList.add(holder);
-        return holder;
+//        IssuesHolder holder = new IssuesHolder(view);
+//        mHolderList.add(holder);
+        return new IssuesHolder(view);
     }
 
     @Override
@@ -90,9 +90,9 @@ public class IssuesAdapter extends RecyclerView.Adapter<IssuesAdapter.IssuesHold
 
         public void setClickListener(View.OnClickListener listener){
             mView.setOnClickListener(listener);
-            for (IssuesHolder holder: mHolderList) {
-
-            }
+//            for (IssuesHolder holder: mHolderList) {
+//                holder.disableView();
+           // }
 
         }
     }
